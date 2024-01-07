@@ -17,6 +17,11 @@ df.to_parquet(r'./02.Signals/Data/fin.parquet', compression='zstd', index=False)
 df = download(tickers=tickers, data_type="finQ")
 df.to_parquet(r'./02.Signals/Data/finQ.parquet', compression='zstd', index=False)
 
+_dfs = [_download_others.remote(t) for t in tickers]
+data = _pd.concat(ray.get(_dfs), axis=0, ignore_index=True)
+data.replace('Infinity', None)\
+    .to_parquet(r'./02.Signals/Data/others.parquet', compression='zstd', index=False)
+
 #exec(open('_utility/download_tickers_from_yfinance2.py').read())
 #price, fin, finQ, other, error = download(tickers=tickers[0:3])
 # price.to_parquet(r'./02.Signals/Data/price.parquet', compression='zstd', index=False)

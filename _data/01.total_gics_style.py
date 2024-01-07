@@ -21,6 +21,7 @@ style = pd.concat(_dfs.values(), ignore_index=True)\
     .pivot(index='Ticker', columns='ETF', values='% of fund*')
 
 exchange = pd.read_csv("02.Signals/Data/equityshortinterest_20231001_20231130.csv", low_memory=False)
+exchange = exchange.groupby('Symbol').head(1)
 exchange['exchange'] = exchange['Market']
 exchange = exchange[["Symbol", "exchange"]].drop_duplicates()
 

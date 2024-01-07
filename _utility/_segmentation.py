@@ -29,3 +29,16 @@ def _SpectralCoclustering(data, n_clusters, title, cols_nm):
     plt.title(title)
     plt.tight_layout()
     plt.show()
+
+def xxx(df, bygroup, metric, tickers):
+    """
+    It is to zoom in a selected list of anomalies by analyzing
+        the relative position of tickers of interest in their group.
+    :param df: pd.dataframe contains metric value and rank for each ticker
+    :param bygroup: key dimensions incl. industry, sub-industry, mega_k, mega_g
+    :param metric: anomalies of interest incl. Mom12offSeason, Cash, EBM, .....
+    :param tickers: selected list of tickers based on AccrualsBM, MomRev, IO_shortInterest, CBOperProfLagAT
+    :return: pd.dataframe with benchmark information in regard of bygroup.
+    """
+
+    return df

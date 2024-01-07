@@ -1,5 +1,7 @@
-# strategy: buy stocks with high profit-to-asset.
-# rational: profitable firms are less prone to distress, have longer cash flow durations, and have lower levels of operating leverage.
+# Profitability: how much money a firm can make by deploying resources in its possession (total assets)
+# Profitability strategy: buy stocks with high profit-to-asset.
+
+# Highly-profitable firms are less prone to distress, have longer cash flow durations, and have lower levels of operating leverage.
 
 # profit is calculated in different kinds:
 # gross profit,                 https://github.com/OpenSourceAP/CrossSection/blob/master/Signals/Code/Placebos/GPlag_q.do
@@ -46,6 +48,7 @@ def profitability(base, keep_all=False):
     df['CashOperProf_to_asset_alt'] = df['CashOperProf_alt'] / df['asset_lag']
     df['CBOperProfLagAT_alt_q'] = df['CashOperProf_to_asset_alt'].transform(lambda x: _bin(x, 10)).astype(str)
 
+    print('Complete: profitability')
     if keep_all:
         return df
     else:

@@ -1,5 +1,6 @@
-# https://github.com/OpenSourceAP/CrossSection/blob/master/Signals/Code/Predictors/MomRev.do
-# strategy: consider short-term momentum and mid-term reversal. (independent sorting)
+# https://github.com/OpenSourceAP/CrossSection/blob/master/Signals/Code/Predictors/ZZ1_ResidualMomentum6m_ResidualMomentum.do
+# strategy: it's to show the momentum exists after controlling FF 3-factor models.
+# it's less meaningful to guide portfolio construction...
 
 from statsmodels.regression.rolling import RollingOLS
 import statsmodels.api as sm
@@ -46,9 +47,12 @@ def MomResiduals(base=base, ff=ff, keep_all=False):
     df['MomResiduals6m'] = df.groupby('date_ym', group_keys=False)['MomResid6m'].apply(lambda x: _bin(x, 10)).astype(str)
     df['MomResiduals12m'] = df.groupby('date_ym', group_keys=False)['MomResid12m'].apply(lambda x: _bin(x, 10)).astype(str)
 
+    # Fama-French dataset lags two months or more. Only keep the most recent
+    rows = (df.date_ym == ff.date_ym.max())
+
     if keep_all:
-        return df
+        return df[rows]
     else:
-        return df[['ticker', 'date_ym', 'MomResiduals6m', 'MomResiduals12m']]
+        return df[rows][['ticker', 'MomResiduals6m', 'MomResiduals12m']]
 
 #df = MomResiduals(base, ff)

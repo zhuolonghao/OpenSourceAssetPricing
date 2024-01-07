@@ -37,8 +37,7 @@ def download(tickers, data_type="price", period="5y", interval="1d"):
         _dfs = [_download_finQ.remote(t) for t in tickers]
         data = _pd.concat(ray.get(_dfs), axis=0, ignore_index=True)
     else:
-        print('The yahoo data pull is limited to price, fin, or finQ')
-
+        print('Download function is limited to price, fin, or finQ')
     return data
 
 @ray.remote

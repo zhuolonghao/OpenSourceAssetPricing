@@ -7,5 +7,5 @@ def _bin(x,q):
     x1 = x.rank(ascending=True, method='dense')
     _max = x1.max()
     _binInterval = np.linspace(0, _max, num=q+1)
-    _binLabel = range(1, q+1)
+    _binLabel = np.linspace(1, 10, num=q)
     return pd.cut(x1, bins=_binInterval, labels=_binLabel)

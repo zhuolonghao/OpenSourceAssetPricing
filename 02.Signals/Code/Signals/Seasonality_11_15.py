@@ -5,25 +5,27 @@
 #   do not buy winners in other months in preceding years (that is winner in Jan-Nov 2021, 2020, 2019, ....)
 def Seasonality_11_15(base=base, keep_all=False):
     df = base.copy()
-    df['ret_shift'] = df.groupby('ticker')['close'].pct_change(1).shift(121)
+    df['ret'] = df.groupby('ticker')['close'].pct_change(1)
+    df['ret_shift'] = df.groupby('ticker')['ret'].shift(120)
     df['ret_total'] = df.groupby('ticker')['ret_shift'].transform(lambda x: x.rolling(60, 1).sum())
     df['ret_cnt'] = df.groupby('ticker')['ret_shift'].transform(lambda x: x.rolling(60, 1).count())
-    df['ret_shift2'] = df.groupby('ticker')['close'].pct_change(1).shift(132)
-    df['ret_shift3'] = df.groupby('ticker')['close'].pct_change(1).shift(144)
-    df['ret_shift4'] = df.groupby('ticker')['close'].pct_change(1).shift(156)
-    df['ret_shift5'] = df.groupby('ticker')['close'].pct_change(1).shift(168)
-    df['ret_shift6'] = df.groupby('ticker')['close'].pct_change(1).shift(180)
+    df['ret_shift2'] = df.groupby('ticker')['ret'].shift(131)
+    df['ret_shift3'] = df.groupby('ticker')['ret'].shift(143)
+    df['ret_shift4'] = df.groupby('ticker')['ret'].shift(155)
+    df['ret_shift5'] = df.groupby('ticker')['ret'].shift(167)
+    df['ret_shift6'] = df.groupby('ticker')['ret'].shift(179)
     df['ret_total_s'] = df[['ret_shift2', 'ret_shift3', 'ret_shift4', 'ret_shift5', 'ret_shift6']].sum(axis=1)
     df['ret_cnt_s'] = df[['ret_shift2', 'ret_shift3', 'ret_shift4', 'ret_shift5', 'ret_shift6']].count(axis=1)
 
     df['on_season'] = df['ret_total_s'] / df['ret_cnt_s']
-    df['off_season'] = -1 * (df['ret_shift'] - df['ret_total_s'] ) / (df['ret_cnt'] - df['ret_cnt_s'])
+    df['off_season'] = -1 * (df['ret_total'] - df['ret_total_s'] ) / (df['ret_cnt'] - df['ret_cnt_s'])
 
     df = df[['ticker', 'date_ym', 'close', 'on_season', 'off_season']][
         df.date_ym.ge("202301")]
 
     df['Season_1115'] = df.groupby('date_ym', group_keys=False)['on_season'].apply(lambda x: _bin(x, 10)).astype(str)
     df['OffSeason_1115'] = df.groupby('date_ym', group_keys=False)['off_season'].apply(lambda x: _bin(x, 10)).astype(str)
+
 
     if keep_all:
         return df

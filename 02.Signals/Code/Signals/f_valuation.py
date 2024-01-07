@@ -1,4 +1,5 @@
-# strategy: buy value stocks
+# valuation: assess firm's value in light of of its market valuation.
+# valuation strategy: buy stocks that are high value-to-price.
 
 # value vs glamour stocks
 #   value means     low past sale growth,   high book-to-market,    high earnings-to-price,     and high cash flow-to-price
@@ -20,8 +21,11 @@
 #   practitioners: (MVE + Debt + Preferred stocks - Cash) / Earning
 #   conclusion: buying (selling) stocks with a low EntMult, b/c they earn same money with less resources.
 
-
-finQ[[x for x in finQ.columns if 'prefer' in x.lower()]].count()
+# Sig
+# rows = 'Leverage'
+# SignalDoc[SignalDoc.Acronym.eq(rows)][cols].T
+# print(SignalDoc[SignalDoc.Acronym.eq(rows)]["Detailed Definition"].values)
+# finQ[[x for x in finQ.columns if 'depreciation' in x.lower()]].count()
 
 def valuation(base, keep_all=False):
     var_base = ['ticker', 'date_ym', 'sector', 'exchange']
@@ -29,7 +33,7 @@ def valuation(base, keep_all=False):
         # Accruals
         'currentassets', 'cashandcashequivalents', 'cashcashequivalentsandshortterminvestments',
         'currentliabilities', 'currentdebt', 'currentdebtandcapitalleaseobligation',
-        'taxprovision', 'totalassets',
+        'totaltaxpayable', 'totalassets',
         # BM
         'commonstockequity', 'close', 'ordinarysharesnumber']
     var_EntMult = [
@@ -48,7 +52,7 @@ def valuation(base, keep_all=False):
         'netincome',
         'currentassets', 'cashandcashequivalents', 'cashcashequivalentsandshortterminvestments',
         'currentliabilities', 'currentdebt', 'currentdebtandcapitalleaseobligation',
-        'taxprovision', 'reconcileddepreciation',
+        'totaltaxpayable', 'reconcileddepreciation',
         # denominator
         'close', 'ordinarysharesnumber']
     var_EBM = [
@@ -87,23 +91,24 @@ def valuation(base, keep_all=False):
     df['asset_avg'] = 0.5*(df['totalassets'] + df.groupby('ticker')['totalassets'].shift(4))
 
     # missing values in these variables are not systematic
-    vars_fill = ['taxprovision', 'dividends_prefer', 'deferred_charges', 'preferredstock', 'reconcileddepreciation']
+    vars_fill = ['totaltaxpayable', 'dividends_prefer', 'deferred_charges', 'preferredstock', 'reconcileddepreciation']
     for v in vars_fill: df[v] = df[v].fillna(0)
     # calcualte annual change
-    vars_chg = ['taxprovision', 'currentassets', 'cash', 'currentliabilities', 'debt_current']
+    vars_chg = ['totaltaxpayable', 'currentassets', 'cash', 'currentliabilities', 'debt_current']
     for v in vars_chg: df[f"{v}_chg"] = df[v] - df.groupby('ticker')[v].shift(4)
-    df['Accruals'] = (df['currentassets_chg'] - df['cash_chg'] \
-                     - df['currentliabilities_chg'] - df['debt_current_chg'] \
-                     - df['taxprovision_chg'])
-    df['Accruals_v2'] = (df['currentassets_chg'] - df['cash_chg'] \
-                     - df['currentliabilities_chg'] - df['debt_current_chg'] \
-                     - df['taxprovision_chg']) \
+    df['Accruals'] = (df['currentassets_chg'] - df['cash_chg']) \
+                     - (df['currentliabilities_chg'] - df['debt_current_chg'] - df['totaltaxpayable_chg'])
+    df['Accruals_v2'] = (df['currentassets_chg'] - df['cash_chg']) \
+                     - (df['currentliabilities_chg'] - df['debt_current_chg'] - df['totaltaxpayable_chg']) \
                      - df['reconcileddepreciation']
     df['Accruals_v3'] = df['netincome'] - df['operatingcashflow']
     df['EBM_drift'] = df['cash'] - df['debt_noncurrent'] - df['debt_current'] - df['deferred_charges'] - df['dividends_prefer'] + df['treasury_stock']
     df['ent_value'] = df['mve'] + df['debt_current'] + df['debt_noncurrent'] + df['preferredstock'] - df['cash']
 
     df = df.groupby('ticker').tail(1)
+
+    # filter
+    rows = df['close'].gt(5)
 
     df['BM'] = df['commonstockequity'] / df['mve_adj']
     df['BM_q5'] = df['BM'].transform(lambda x: _bin(x, 5)).astype(str)
@@ -113,8 +118,8 @@ def valuation(base, keep_all=False):
     df['Accruals_q'] = df['Accruals_to_asset'].transform(lambda x: _bin(x, 5)).astype(str)
 
     df['AccrualsBM_q'] = None
-    df.loc[df['BM_q5'].eq('5') & df['Accruals_q'].eq('1'), 'AccrualsBM_q'] = 1
-    df.loc[df['BM_q5'].eq('1') & df['Accruals_q'].eq('5'), 'AccrualsBM_q'] = 0
+    df.loc[df['BM_q5'].eq('10.0') & df['Accruals_q'].eq('1.0'), 'AccrualsBM_q'] = 1
+    df.loc[df['BM_q5'].eq('1.0')  & df['Accruals_q'].eq('10.0'), 'AccrualsBM_q'] = 0
     df.loc[df['commonstockequity'].le(0), 'AccrualsBM_q'] = None
 
     df['cfp'] = df['operatingcashflow'] / df['mve_adj']
@@ -122,6 +127,7 @@ def valuation(base, keep_all=False):
     df['cfp_q'] = df['cfp'].transform(lambda x: _bin(x, 5)).astype(str)
 
     df['EBM'] = (df['commonstockequity'] + df["EBM_drift"]) / (df['mve_adj'] + df["EBM_drift"] )
+    df.loc[rows, 'EBM'] = None
     df['EBM_q'] = df['EBM'].transform(lambda x: _bin(x, 10)).astype(str)
 
     df['EntMult'] = None
@@ -129,15 +135,13 @@ def valuation(base, keep_all=False):
     df['EntMult_q'] = df['EntMult'].transform(lambda x: _bin(x, 10)).astype(str)
 
     df['CF'] = None
-    df.loc[df['exchange'].isin(['NYSE', 'AMEX']), 'EntMult'] = (df['netincome'] + df['reconcileddepreciation'])/ df['mve_adj']
-    df['CF_q'] = df['EntMult'].transform(lambda x: _bin(x, 10)).astype(str)
+    df.loc[df['exchange'].isin(['NYSE', 'AMEX']), 'CF'] = (df['netincome'] + df['reconcileddepreciation'])/ df['mve_adj']
+    df['CF_q'] = df['CF'].transform(lambda x: _bin(x, 10)).astype(str)
 
+    print('Complete: valuation')
     if keep_all:
         return df
     else:
-        return df[['ticker', 'BM_q', 'AccrualsBM_q', 'CF_q', 'EntMult_q', 'EBM_q', 'cfp_q']]
+        return df[['ticker', 'BM_q', 'EBM_q', 'AccrualsBM_q', 'EntMult_q', 'CF_q', 'cfp_q']]
 
-df = valuation(finQ)
-
-
-
+# df = valuation(finQ)

@@ -5,19 +5,20 @@
 #   do not buy winners in other months in preceding years (that is winner in Jan-Nov 2021, 2020, 2019, ....)
 def Seasonality_06_10(base=base, keep_all=False):
     df = base.copy()
-    df['ret_shift'] = df.groupby('ticker')['close'].pct_change(1).shift(61)
+    df['ret'] = df.groupby('ticker')['close'].pct_change(1)
+    df['ret_shift'] = df.groupby('ticker')['ret'].shift(60)
     df['ret_total'] = df.groupby('ticker')['ret_shift'].transform(lambda x: x.rolling(60, 1).sum())
     df['ret_cnt'] = df.groupby('ticker')['ret_shift'].transform(lambda x: x.rolling(60, 1).count())
-    df['ret_shift2'] = df.groupby('ticker')['close'].pct_change(1).shift(72)
-    df['ret_shift3'] = df.groupby('ticker')['close'].pct_change(1).shift(84)
-    df['ret_shift4'] = df.groupby('ticker')['close'].pct_change(1).shift(96)
-    df['ret_shift5'] = df.groupby('ticker')['close'].pct_change(1).shift(108)
-    df['ret_shift6'] = df.groupby('ticker')['close'].pct_change(1).shift(120)
+    df['ret_shift2'] = df.groupby('ticker')['ret'].shift(71)
+    df['ret_shift3'] = df.groupby('ticker')['ret'].shift(83)
+    df['ret_shift4'] = df.groupby('ticker')['ret'].shift(95)
+    df['ret_shift5'] = df.groupby('ticker')['ret'].shift(107)
+    df['ret_shift6'] = df.groupby('ticker')['ret'].shift(119)
     df['ret_total_s'] = df[['ret_shift2', 'ret_shift3', 'ret_shift4', 'ret_shift5', 'ret_shift6']].sum(axis=1)
     df['ret_cnt_s'] = df[['ret_shift2', 'ret_shift3', 'ret_shift4', 'ret_shift5', 'ret_shift6']].count(axis=1)
 
     df['on_season'] = df['ret_total_s'] / df['ret_cnt_s']
-    df['off_season'] = -1 * (df['ret_shift'] - df['ret_total_s'] ) / (df['ret_cnt'] - df['ret_cnt_s'])
+    df['off_season'] = -1 * (df['ret_total'] - df['ret_total_s'] ) / (df['ret_cnt'] - df['ret_cnt_s'])
 
     df = df[['ticker', 'date_ym', 'close', 'on_season', 'off_season']][
         df.date_ym.ge("202301")]
