@@ -85,14 +85,8 @@ def _download_others(ticker):
     df = None
     object = yf.Ticker(ticker)
     try:
-        major_holders = dict(zip(object.major_holders[1], object.major_holders[0]))
-        info = object.info
-        del info['companyOfficers']
-        df = _pd.DataFrame.from_dict(
-            [{**{'ticker': ticker},
-              **object.info,
-              **object.fast_info,
-              **major_holders}])
+        df = _pd.DataFrame.from_dict([object.info]).assign(
+            ticker=ticker)
     except Exception as e:
         print(f'\n Error in downloading {ticker}')
     return df

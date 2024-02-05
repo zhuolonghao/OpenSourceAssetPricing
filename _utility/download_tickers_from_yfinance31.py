@@ -85,14 +85,8 @@ def _download_others(ticker):
     df = None
     object = yf.Ticker(ticker)
     try:
-        major_holders = dict(zip(object.major_holders[1], object.major_holders[0]))
-        info = object.info
-        del info['companyOfficers']
-        df = _pd.DataFrame.from_dict([
-            {**{'ticker': ticker},
-              **object.info,
-              **object.fast_info,
-              **major_holders}])
+        df = _pd.DataFrame.from_dict([object.info]).assign(
+            ticker=ticker)
     except Exception as e:
         print(f'\n Error in downloading {ticker}')
     return df
@@ -104,3 +98,30 @@ start_time = timeit.default_timer()
 tickers=['MSFT', 'WFC'] * 50
 price, fin, finQ, others = download(tickers)
 print(f'Ray completed in: {timeit.default_timer() - start_time} seconds')
+
+
+###################### 2024.4.5
+import yfinance as yf
+
+def get_institutional_holders(ticker_symbol):
+    try:
+        # Create a Ticker object
+        ticker = yf.Ticker(ticker_symbol)
+
+        # Get institutional holders data
+        institutional_holders = ticker.institutional_holders
+
+        return institutional_holders
+
+    except Exception as e:
+        print(f"Error: {e}")
+        return None
+
+# Example usage
+ticker_symbol = "AAPL"  # Replace with the desired company's ticker symbol
+institutional_holders_data = get_institutional_holders(ticker_symbol)
+
+if institutional_holders_data is not None:
+    print(institutional_holders_data)
+else:
+    print("Failed to fetch institutional holder information.")

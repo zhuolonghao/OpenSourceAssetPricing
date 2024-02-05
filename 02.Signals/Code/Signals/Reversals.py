@@ -6,6 +6,9 @@
 # print(SignalDoc[SignalDoc.Acronym.eq(rows)]["Detailed Definition"].values)
 
 def Reversals(base=base, others=others, keep_all=False):
+    # 2024.2.5 fix bug due to the changes in data suppliers.
+    others['sharesoutstanding'] = others['sharesOutstanding']
+
     df = base.merge(others[['ticker', 'sharesoutstanding']], how='left', left_on='ticker', right_on='ticker').copy()
     df['turnover'] = df['volume'] / df['sharesoutstanding']
     df['ret'] = df.groupby('ticker')['close'].pct_change()

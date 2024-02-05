@@ -26,13 +26,20 @@
 # finQ[[x for x in finQ.columns if 'deferred' in x.lower()]].count()
 
 def regulatory_reporting(others, keep_all=False):
+    # 2024.2.5 fix bug due to the changes in data suppliers.
+    others = others.assign(
+        sharesoutstanding=others['sharesOutstanding'],
+        sharesshort=others['sharesShort'],
+        sharespercentsharesout=others['sharesPercentSharesOut'],
+        recommendationmean=others['recommendationMean'],
+    )
     var_base = ['ticker', 'beta']
     var_ShortInterest = [
         # sharesshort / sharesoutstanding
         'sharesshort', 'sharesoutstanding', 'sharespercentsharesout']
     var_IO_ShortInterest = [
         # screening by short interest, short by ownership
-        'sharespercentsharesout', '% of shares held by institutions', 'exchange']
+        'sharespercentsharesout', 'heldPercentInstitutions', 'exchange']
     var_Recomm_ShortInterest = [
         # joint sorting
         'sharespercentsharesout', 'recommendationmean']
@@ -49,7 +56,7 @@ def regulatory_reporting(others, keep_all=False):
     df['ShortInterest_q'] = df['ShortInterest'].transform(lambda x: _bin(x, 5)).astype(str)
 
 
-    df['IO_ShortInterest'] = df['% of shares held by institutions'].str[:-1].astype('float')
+    df['IO_ShortInterest'] = df['heldPercentInstitutions'].str[:-1].astype('float')
     df['ShortInterest_p99'] = df['short_to_shares'].quantile(0.99)
     df.loc[df['short_to_shares'] < df['ShortInterest_p99'], 'IO_ShortInterest'] = None
     df.loc[~df['exchange'].isin(['ASE', 'NYQ']), 'IO_ShortInterest'] = None

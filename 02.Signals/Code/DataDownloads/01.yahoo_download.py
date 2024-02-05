@@ -1,10 +1,11 @@
 # Let's download key information of companies in investable universe
 
 import pandas as pd
+exec(open('_utility/download_tickers_from_yfinance3.py').read())
+
 ref = pd.read_excel("./_data/total_stock_market_holdings.xlsx", sheet_name='reformatted')
 tickers = [str(x).replace(".", "-") for x in ref['Ticker']]
 
-exec(open('_utility/download_tickers_from_yfinance3.py').read())
 df = download(tickers=tickers, data_type="price", period="max", interval="1mo")
 df.to_parquet(r'./02.Signals/Data/price_monthly.parquet', compression='zstd', index=False)
 
