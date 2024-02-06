@@ -1,6 +1,6 @@
-date = '202312'
+date = '202401'
 focus = 'non_micro_tickers' # non_micro_tickers vs micro_tickers
-port = 'MomSeason'
+port = 'seasonality'
 
 import pandas as pd
 from matplotlib.backends.backend_pdf import PdfPages

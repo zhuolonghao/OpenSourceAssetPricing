@@ -6,8 +6,8 @@
 #       14.review_performance.py: date = '202312', eval_window = ['20240101', '20240131']
 
 
-date = '202312'
-eval_window = ['20231201', '20231231']
+date = '202401'
+eval_window = ['20240101', '20240131']
 
 import pandas as pd
 from pandas.tseries.offsets import BMonthBegin, BMonthEnd

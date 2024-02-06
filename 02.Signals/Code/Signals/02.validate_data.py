@@ -1,5 +1,5 @@
-date = '202312'
-date_prev = '202311'
+date = '202401'
+date_prev = '202312'
 
 import pandas as pd
 writer = pd.ExcelWriter(fr'.\02.Signals\validate_{date}.xlsx')
@@ -29,8 +29,11 @@ for p, df in dfs.items():
     compare = curr.merge(prev, how='left', left_index=True, right_index=True)
     compare['diff'] = compare['Invalid: total_x'] - compare['Invalid: total_y']
 
-    print(compare.sort_values('diff')['diff'])
-    print(f"Validate data: {p} \n\n\n ")
+    print(compare.sort_values('diff', ascending=False)['diff'])
+    print(f"Above shows changes in total invalid observations for: {p} \n",
+          f"    ideal case: close to 0 (invalid data remains stable) \n",
+          f"    worse case: negative and big number (invalid data points increased compared to last pull)\n",
+          f"\n\n ")
     # Summarize by key segmentation
     dims = ['exchange', 'sector']
     for d in dims:

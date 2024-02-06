@@ -1,5 +1,5 @@
 date = '202312'
-eval_window = ['20231201', '20231231']
+eval_window = ['20240101', '20240131']
 
 import pandas as pd
 from pandas.tseries.offsets import BMonthBegin, BMonthEnd
@@ -15,7 +15,7 @@ base = normalize_date(df=base, from_to=eval_window)
 base['ret'] = 1 + base.groupby('ticker')['close'].pct_change()
 base['cum_ret'] = base.groupby('ticker')['ret'].cumprod()
 base['assess_date'] = base.groupby('ticker')['date_ymd'].transform(lambda x: f"{min(x)}-{max(x)}")
-base['trade_price'] = base.groupby('ticker')['closed'].transform('last')
+base['trade_price'] = base.groupby('ticker')['close'].transform('last')
 ret = base.groupby('ticker').tail(1)
 
 df = pd.read_excel(fr'.\02.Signals\{date}.xlsx')
