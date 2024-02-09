@@ -11,7 +11,7 @@ writer = pd.ExcelWriter(fr'.\02.Signals\turnover_{curr_date}.xlsx')
 df_curr = pd.read_excel(fr'.\02.Signals\{curr_date}.xlsx')
 df_prev = pd.read_excel(fr'.\02.Signals\{prev_date}.xlsx')
 
-cat = []
+cat = []y
 anomalies = []
 for c, a in _anomalies.items():
     cat.append(c)

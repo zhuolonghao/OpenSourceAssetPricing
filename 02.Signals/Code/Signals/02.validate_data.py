@@ -2,7 +2,7 @@ date = '202401'
 date_prev = '202312'
 
 import pandas as pd
-writer = pd.ExcelWriter(fr'.\02.Signals\validate_{date}.xlsx')
+writer = pd.ExcelWriter(fr".\02.Signals\validate_{date}.xlsx")
 ###########################################################
 # Read data
 ###########################################################
@@ -50,3 +50,5 @@ for p, df in dfs.items():
         .set_index(['style', 'index']).to_excel(writer, sheet_name=f"{p}_style")
 
 writer.close()
+
+

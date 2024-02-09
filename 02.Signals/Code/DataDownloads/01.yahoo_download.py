@@ -3,8 +3,8 @@
 import pandas as pd
 exec(open('_utility/download_tickers_from_yfinance3.py').read())
 
-ref = pd.read_excel("./_data/total_stock_market_holdings.xlsx", sheet_name='reformatted')
-tickers = [str(x).replace(".", "-") for x in ref['Ticker']]
+ref = pd.read_excel("./_data/_total_gics_style.xlsx")
+tickers = [str(x).replace(".", "-") for x in ref['ticker']]
 
 df = download(tickers=tickers, data_type="price", period="max", interval="1mo")
 df.to_parquet(r'./02.Signals/Data/price_monthly.parquet', compression='zstd', index=False)
