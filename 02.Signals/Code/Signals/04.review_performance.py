@@ -6,8 +6,8 @@
 #       14.review_performance.py: date = '202312', eval_window = ['20240101', '20240131']
 
 
-date = '202401'
-eval_window = ['20240101', '20240131']
+date = '202402'
+eval_window = ['20240201', '20240228']
 
 import pandas as pd
 from pandas.tseries.offsets import BMonthBegin, BMonthEnd
@@ -39,7 +39,7 @@ df['selected'] = df[cat].sum(axis=1)
 df['selected, wgt'] = df[cat].gt(0).sum(axis=1)
 
 df = df.merge(ret[['ticker', 'trade_price', 'assess_date', 'cum_ret']], how='left', on='ticker')
-rows = (df[['mega_k', 'mega_v', 'lg_k', 'lg_v', 'mid_k', 'mid_v', 'small_k', 'small_v']] < 0).all(axis=1)
+rows = (df[['mega_growth', 'mega_value', 'large_growth', 'large_value', 'mid_growth', 'mid_value', 'small_growth', 'small_value']] < 0).all(axis=1)
 dfs = {"non_micro": df[~rows].set_index(dims), "micro": df[rows].set_index(dims)}
 
 ###########################################################

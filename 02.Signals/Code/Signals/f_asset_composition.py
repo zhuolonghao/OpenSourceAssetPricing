@@ -30,8 +30,7 @@
 #   Looking at value stocks only, small stocks tend to have higher ratio than large stocks,
 #           conclusioN: buy small-value over big-value
 def asset_composition(base, keep_all=False):
-    vars = ['ticker', 'date_ym', 'industry group', 'exchange',
-            'mega_k', 'mega_v', 'lg_k', 'lg_v', 'mid_k', 'mid_v', 'small_k', 'small_v',
+    vars = ['ticker', 'date_ym',
             'cashandcashequivalents', 'cashcashequivalentsandshortterminvestments', 'accountsreceivable', 'inventory', 'netppe', 'grossppe',
             'totalassets']
     rows = base['industry group'].isin([ # focus on manufacturing industry group

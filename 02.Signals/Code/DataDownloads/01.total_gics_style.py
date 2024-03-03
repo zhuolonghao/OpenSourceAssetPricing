@@ -2,7 +2,7 @@ import os, re, time, shutil
 import webbrowser as web
 import pandas as pd
 import numpy as np
-date = '202401'
+date = '202402'
 
 ###########################################################################################################
 # GICS_8/Style/Size
@@ -23,9 +23,11 @@ _etf = {
 }
 for etf, link in _etf.items():
     web.open(link)
+    time.sleep(5)
+
 ###########################################################################################################
 # Process the downloads and generate one file
-_path_downloads = r"C:\Users\longh\Downloads"
+_path_downloads = r"C:\Users\zlhte\Downloads"
 downloads = [x for x in os.listdir(_path_downloads) if 'ProductDetailsHoldings' in x]
 downloads.insert(0, downloads.pop())
 writer = pd.ExcelWriter(rf".\_data\{date}.xlsx")

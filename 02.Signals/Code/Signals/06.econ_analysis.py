@@ -1,4 +1,4 @@
-date = '202401'
+date = '202402'
 
 import pandas as pd
 import numpy as np

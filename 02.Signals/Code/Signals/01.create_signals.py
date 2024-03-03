@@ -1,4 +1,5 @@
-date = '202401'
+# Instruction: change the date
+date = '202402'
 
 import pandas as pd
 import numpy as np
@@ -38,9 +39,14 @@ others = pd.read_parquet('02.Signals/Data/others.parquet')
 others.columns = [x.lower() for x in others.columns]
 others['date_ym'] = date
 # fama-french factor price
-ff = pd.read_excel('02.Signals/Data/F-F_Research_Data_Factors.xlsx', sheet_name='reformatted')
+ff = pd.read_csv('02.Signals/Data/F-F_Research_Data_Factors.csv',
+                 skiprows=4, usecols=list(range(0, 5)), header=None)
+last_row = np.where(ff.iloc[:, 0].isna())[0][0]-1
+ff = pd.DataFrame(ff.values[1:last_row], columns=['date_ym', 'mkt-rf', 'smb', 'hml', 'rf'])
+
 ff.columns = [x.lower() for x in ff.columns]
 ff['date_ym'] = ff['date_ym'].astype(str)
+ff[['mkt-rf', 'smb', 'hml', 'rf']] = ff[['mkt-rf', 'smb', 'hml', 'rf']].astype(float)
 ff[['mkt-rf', 'smb', 'hml', 'rf']] = ff[['mkt-rf', 'smb', 'hml', 'rf']]/100
 
 ###########################################################

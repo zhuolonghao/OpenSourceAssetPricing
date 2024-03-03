@@ -1,5 +1,6 @@
-date = '202401'
-date_prev = '202312'
+# Instruction: change the date
+date = '202402'
+date_prev = '202401'
 
 import pandas as pd
 writer = pd.ExcelWriter(fr".\02.Signals\validate_{date}.xlsx")
@@ -7,9 +8,19 @@ writer = pd.ExcelWriter(fr".\02.Signals\validate_{date}.xlsx")
 # Read data
 ###########################################################
 df = pd.read_excel(fr'.\02.Signals\{date}.xlsx')
-dims = df.columns[:18].tolist()
-rows = (df[['mega_k', 'mega_v', 'lg_k', 'lg_v', 'mid_k', 'mid_v', 'small_k', 'small_v']] < 0).all(axis=1)
-dfs = {"non_micro": df[~rows].set_index(dims), "micro": df[rows].set_index(dims)}
+dim1 = ['mega_growth', 'mega_value', 'large_growth', 'large_value', 'mid_growth', 'mid_value', 'small_growth', 'small_value']
+rows = (df[dim1] < 0).all(axis=1)
+index = dim1 + ['ticker', 'holdings name', 'exchange', 'market', 'sector', 'industry group', 'industry', 'sub-industry', 'date_ym']
+cols = ['MomRev', 'MomFirmAge', 'MomVol', 'MomInt', 'MomResiduals6m',
+       'MomResiduals12m', 'Mom_m02_m11', 'Mom_m02_m11_pos', 'Season_0205',
+       'OffSeason_0205', 'Season_0610', 'OffSeason_0610', 'Season_1115',
+       'OffSeason_1115', 'Season_1620', 'OffSeason_1620', 'STreversal',
+       'MRreversal', 'LRreversal', 'MomTurnover', 'BM_q', 'EBM_q',
+       'AccrualsBM_q', 'EntMult_q', 'CF_q', 'cfp_q', 'GPlag_q',
+       'OperProfRDLagAT_q', 'CBOperProfLagAT_q', 'CBOperProfLagAT_alt_q',
+       'ChInv_q', 'Investment_q', 'DelDRC_q', 'cash_q', 'tang_q',
+       'ShortInterest_q', 'IO_ShortInterest_q', 'Recomm_ShortInterest_q']
+dfs = {"non_micro": df[~rows].set_index(index)[cols], "micro": df[rows].set_index(index)[cols]}
 
 for p, df in dfs.items():
     _dfs = {}
@@ -25,7 +36,7 @@ for p, df in dfs.items():
     curr = pd.concat(output, axis=1)
     curr.sort_values('Buying').to_excel(writer, sheet_name=f"{p}")
     # Add printouts to compare with previous records
-    prev = pd.read_excel(fr'.\02.Signals\validate_{date_prev}.xlsx', sheet_name=f"{p}").set_index('Unnamed: 0')
+    prev = pd.read_excel(fr'.\02.Signals\validate_{date_prev}.xlsx', sheet_name=f"{p}", engine='openpyxl').set_index('Unnamed: 0')
     compare = curr.merge(prev, how='left', left_index=True, right_index=True)
     compare['diff'] = compare['Invalid: total_x'] - compare['Invalid: total_y']
 
@@ -42,7 +53,7 @@ for p, df in dfs.items():
         pd.concat(output, axis=1).to_excel(writer, sheet_name=f"{p}_{d}")
     # Summarize by Style
     _output = {}
-    dims = ['mega_k', 'mega_v', 'lg_k', 'lg_v', 'mid_k', 'mid_v', 'small_k', 'small_v']
+    dims = ['mega_growth', 'mega_value', 'large_growth', 'large_value', 'mid_growth', 'mid_value', 'small_growth', 'small_value']
     for d in dims:
         output = [df[df.index.get_level_values(d) > 0].sum().rename(col)for col, df in _dfs.items()]
         _output[d] = pd.concat(output, axis=1).assign(style=d)
@@ -50,5 +61,90 @@ for p, df in dfs.items():
         .set_index(['style', 'index']).to_excel(writer, sheet_name=f"{p}_style")
 
 writer.close()
-
-
+# 202402
+# cfp_q                      60
+# BM_q                       60
+# CBOperProfLagAT_alt_q      52
+# CBOperProfLagAT_q          52
+# OperProfRDLagAT_q          52
+# GPlag_q                    52
+# MomFirmAge                 26
+# CF_q                       21
+# cash_q                      9
+# tang_q                      6
+# EntMult_q                   5
+# OffSeason_0205             -6
+# MRreversal                 -6
+# MomInt                     -6
+# Season_0205                -7
+# ShortInterest_q            -8
+# STreversal                 -8
+# MomRev                    -10
+# MomTurnover               -10
+# MomResiduals12m           -10
+# LRreversal                -11
+# OffSeason_1115            -13
+# OffSeason_0610            -14
+# MomResiduals6m            -15
+# Season_1115               -16
+# OffSeason_1620            -17
+# Mom_m02_m11               -17
+# Mom_m02_m11_pos           -17
+# Season_0610               -17
+# Season_1620               -17
+# EBM_q                     -21
+# Recomm_ShortInterest_q    -21
+# IO_ShortInterest_q        -22
+# MomVol                    -23
+# AccrualsBM_q              -52
+# DelDRC_q                 -520
+# ChInv_q                  -633
+# Investment_q             -865
+# Name: diff, dtype: int64
+# Above shows changes in total invalid observations for: non_micro
+#      ideal case: close to 0 (invalid data remains stable)
+#      worse case: negative and big number (invalid data points increased compared to last pull)
+#
+#
+# GPlag_q                    18
+# BM_q                       16
+# cfp_q                      16
+# CBOperProfLagAT_q          15
+# OperProfRDLagAT_q          15
+# CBOperProfLagAT_alt_q      14
+# EntMult_q                   3
+# tang_q                     -6
+# CF_q                       -8
+# cash_q                     -9
+# IO_ShortInterest_q        -17
+# MomVol                    -18
+# Mom_m02_m11               -20
+# Mom_m02_m11_pos           -22
+# Season_0205               -22
+# MRreversal                -23
+# MomFirmAge                -23
+# MomResiduals6m            -24
+# OffSeason_0205            -25
+# MomResiduals12m           -25
+# MomInt                    -25
+# OffSeason_1620            -25
+# Recomm_ShortInterest_q    -26
+# Season_1620               -26
+# OffSeason_1115            -26
+# Season_1115               -26
+# OffSeason_0610            -26
+# ShortInterest_q           -30
+# Season_0610               -31
+# EBM_q                     -33
+# LRreversal                -34
+# STreversal                -38
+# MomRev                    -40
+# MomTurnover               -40
+# AccrualsBM_q              -53
+# DelDRC_q                 -142
+# ChInv_q                  -179
+# Investment_q             -185
+# Name: diff, dtype: int64
+# Above shows changes in total invalid observations for: micro
+#      ideal case: close to 0 (invalid data remains stable)
+#      worse case: negative and big number (invalid data points increased compared to last pull)
