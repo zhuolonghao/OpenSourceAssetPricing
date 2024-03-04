@@ -27,15 +27,3 @@ data = _pd.concat(ray.get(_dfs), axis=0, ignore_index=True)
 data.replace('Infinity', None)\
     .to_parquet(r'./02.Signals/Data/others.parquet', compression='zstd', index=False)
 print('Completed: other information')
-
-#exec(open('_utility/download_tickers_from_yfinance2.py').read())
-#price, fin, finQ, other, error = download(tickers=tickers[0:3])
-# price.to_parquet(r'./02.Signals/Data/price.parquet', compression='zstd', index=False)
-# fin.to_parquet(r'./02.Signals/Data/fin.parquet', compression='zstd', index=False)
-# finQ.to_parquet(r'./02.Signals/Data/finQ.parquet', compression='zstd', index=False)
-# other.to_parquet(r'./02.Signals/Data/other.parquet', compression='zstd', index=False)
-
-# exec(open('_utility/download_tickers_from_yfinance.py').read())
-# df, _tickers = download(tickers=tickers)
-# df.to_parquet(r'./02.Signals/Data/data_yahoo.parquet', compression='zstd', index=False)
-# tickers = [key for key, value in _tickers.items() if value=='fail']

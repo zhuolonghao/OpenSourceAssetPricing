@@ -19,6 +19,7 @@ def MomVol(base=base, keep_all=False):
     if keep_all:
         return df
     else:
+        print('Completed: MomVol')
         return df[['ticker', 'date_ym', 'MomVol']]
 
 

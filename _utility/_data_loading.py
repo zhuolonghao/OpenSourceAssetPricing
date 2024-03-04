@@ -1,21 +1,5 @@
 import pandas as pd
 
-def normalize_date(df, from_to=[]):
-    if not isinstance(df, pd.DataFrame):
-        raise TypeError("df must be a pandas DataFrame")
-    if not isinstance(from_to, list):
-        raise TypeError("window must be a list, like ['20231201', 20231231]")
-
-    df.columns = [x.lower() for x in df.columns]
-    df['date_ymd'] = df['date_raw'].dt.strftime("%Y%m%d")
-    df['date_ym'] = df['date_ymd'].str[:6]
-    if len(from_to) == 2:
-        start, end = from_to[0], from_to[1]
-        rows = df['date_ymd'].ge(start) & df['date_ymd'].le(end)
-        df = df[rows]
-    df2 = df.sort_values(by=['ticker', 'date_raw'])
-    return df2
-
 # Custom formatting function
 format_dict = {
     'count': lambda x: '{:.0f}'.format(x),

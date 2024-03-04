@@ -22,6 +22,7 @@ def Mom12mOffSeason(base=base, keep_all=False):
     if keep_all:
         return df
     else:
+        print('Completed: Mom12mOffSeason')
         return df[['ticker', 'date_ym', 'Mom_m02_m11', 'Mom_m02_m11_pos']]
 
 # df = Mom12mOffSeason()

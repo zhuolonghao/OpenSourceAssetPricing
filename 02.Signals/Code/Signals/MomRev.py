@@ -17,6 +17,7 @@ def MomRev(base=base, keep_all=False):
     if keep_all:
         return df
     else:
+        print('Completed: MomRev')
         return df[['ticker', 'date_ym', 'MomRev']]
 
 

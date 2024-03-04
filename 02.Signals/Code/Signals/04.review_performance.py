@@ -2,12 +2,12 @@
 # These anomalies are built using information available up to month end (2023-12-31)
 # These anomalies would be used to guide the stock selection for next month (2024-01-01 to 2024-01-31)
 # It's different from 14.review_performance.py in a critical way.
-#       04.review_performance.py: date = '202312', eval_window = ['20231201', '20231231']
-#       14.review_performance.py: date = '202312', eval_window = ['20240101', '20240131']
+#       04.review_performance.py: date = '202312', eval_window = ['20231201', '20231231'], new_ver, [202312, 202312]
+#       14.review_performance.py: date = '202312', eval_window = ['20240101', '20240131'], new_ver, [202401, 202401]
 
 
 date = '202402'
-eval_window = ['20240201', '20240228']
+eval_window = [202402, 202402]
 
 import pandas as pd
 from pandas.tseries.offsets import BMonthBegin, BMonthEnd
@@ -15,19 +15,23 @@ exec(open('_utility/_anomaly_portfolio.py').read())
 exec(open('_utility/_data_loading.py').read())
 
 writer = pd.ExcelWriter(fr'.\02.Signals\rankings_{date}.xlsx')
+print(fr'Process-1: score every ticker by each anomaly and save in .\02.Signals\rankings_{date}.xlsx')
 ###########################################################
 # Read data
 ###########################################################
 base = pd.read_parquet('02.Signals/Data/price.parquet')
-base = normalize_date(df=base, from_to=eval_window)
+base.columns = [x.lower() for x in base.columns]
+rows = (eval_window[0] <= base.date_ym.astype(int)) & (base.date_ym.astype(int) <= eval_window[0])
+base = base[rows]
 base['ret'] = 1 + base.groupby('ticker')['close'].pct_change()
 base['cum_ret'] = base.groupby('ticker')['ret'].cumprod()
-base['assess_date'] = base.groupby('ticker')['date_ymd'].transform(lambda x: f"{min(x)}-{max(x)}")
+base['assess_date'] = base.assign(date_ymd=base['date_raw'].dt.strftime('%Y%m%d'))\
+    .groupby('ticker')['date_ymd'].transform(lambda x: f"{min(x)}-{max(x)}")
 base['trade_price'] = base.groupby('ticker')['close'].transform('last')
 ret = base.groupby('ticker').tail(1)
 
 df = pd.read_excel(fr'.\02.Signals\{date}.xlsx')
-dims = df.columns[:18].tolist()
+dims = _dimension
 cat = []
 anomalies = []
 for c, a in _anomalies.items():
@@ -39,7 +43,7 @@ df['selected'] = df[cat].sum(axis=1)
 df['selected, wgt'] = df[cat].gt(0).sum(axis=1)
 
 df = df.merge(ret[['ticker', 'trade_price', 'assess_date', 'cum_ret']], how='left', on='ticker')
-rows = (df[['mega_growth', 'mega_value', 'large_growth', 'large_value', 'mid_growth', 'mid_value', 'small_growth', 'small_value']] < 0).all(axis=1)
+rows = (df[_size_style] < 0).all(axis=1)
 dfs = {"non_micro": df[~rows].set_index(dims), "micro": df[rows].set_index(dims)}
 
 ###########################################################

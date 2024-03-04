@@ -41,18 +41,19 @@ def MomResiduals(base=base, ff=ff, keep_all=False):
     df['resid11_std'] = df.groupby('ticker')['l1.residuals'].transform(lambda x: x.rolling(11, 11).std())
     df['MomResid12m'] = df['resid11_mean'] / df['resid11_std']
 
-    df = df[['ticker', 'date_ym', 'close', 'MomResid6m', 'MomResid12m']][
-        df.date_ym.ge("202301")]
+    rows = (df.date_ym == ff.date_ym.max())
+    cols = ['ticker', 'date_ym', 'close', 'MomResid6m', 'MomResid12m']
+    df = df[rows][cols]
 
     df['MomResiduals6m'] = df.groupby('date_ym', group_keys=False)['MomResid6m'].apply(lambda x: _bin(x, 10)).astype(str)
     df['MomResiduals12m'] = df.groupby('date_ym', group_keys=False)['MomResid12m'].apply(lambda x: _bin(x, 10)).astype(str)
 
     # Fama-French dataset lags two months or more. Only keep the most recent
-    rows = (df.date_ym == ff.date_ym.max())
 
     if keep_all:
         return df[rows]
     else:
+        print('Completed: MomResiduals')
         return df[rows][['ticker', 'MomResiduals6m', 'MomResiduals12m']]
 
 #df = MomResiduals(base, ff)

@@ -43,6 +43,7 @@ def Reversals(base=base, others=others, keep_all=False):
     if keep_all:
         return df
     else:
+        print('Completed: Reversals')
         return df[['ticker', 'date_ym', 'STreversal',  'MRreversal', 'LRreversal', 'MomTurnover']]
 
 # df = Reverasls(base)

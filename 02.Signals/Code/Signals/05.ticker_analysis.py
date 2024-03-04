@@ -9,19 +9,20 @@ exec(open('_utility/_data_loading.py').read())
 exec(open('_utility/_plotting.py').read())
 
 
-
-df = pd.read_excel(fr'.\02.Signals\rankings_{date}.xlsx',  sheet_name=focus)
-for key, value in _anomalies.items():
-    df[key] = df[key] / len(value)
-df_filter = df.reset_index()
 ###########################################################
 # filtering based on portfolio conditions
 ###########################################################
-for port, conditions_dict in portfolios.items():
+df = pd.read_excel(fr'.\02.Signals\rankings_{date}.xlsx',  sheet_name=focus)
+for key, value in _anomalies.items():
+    df[key] = df[key] / len(value)
+df2 = df.reset_index()
+
+for port, conditions_dict in _portfolios.items():
+    df_filter = df2.copy()
     print(f'producing: {port}')
-    pdf = PdfPages(f'{port}.pdf')
     for column, condition in conditions_dict.items():
         df_filter = df_filter[condition(df_filter[column])]
+        print(df_filter.shape)
     ###########################################################
     # filtering based on portfolio conditions
     ###########################################################
@@ -33,6 +34,7 @@ for port, conditions_dict in portfolios.items():
     # Split the DataFrame into subframes
     subframes = np.array_split(df_filter, num_subframes)
     # Displaying the subframes
+    pdf = PdfPages(fr'.\03.Portfolios\{port}.pdf')
     for i, subframe in enumerate(subframes):
         print(f"producing charts for {port}")
         fig = plt.figure(figsize=(8.5, 11))
@@ -40,6 +42,5 @@ for port, conditions_dict in portfolios.items():
             _ticker_chart(j + 1, subframe.iloc[j], sector_color, hexagon_vertices)
         plt.tight_layout()
         pdf.savefig(fig)
-        plt.show()
-
+        plt.close()
     pdf.close()

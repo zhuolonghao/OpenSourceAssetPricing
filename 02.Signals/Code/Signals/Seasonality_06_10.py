@@ -29,6 +29,7 @@ def Seasonality_06_10(base=base, keep_all=False):
     if keep_all:
         return df
     else:
+        print('Completed: Seasonality_06_10')
         return df[['ticker', 'date_ym', 'Season_0610', 'OffSeason_0610']]
 
 # df = Seasonality_06_10()

@@ -17,6 +17,7 @@ def MomInt(base=base, keep_all=False):
     if keep_all:
         return df
     else:
+        print('Completed: MomInt')
         return df[['ticker', 'date_ym', 'MomInt']]
 
 # df = MomInt()

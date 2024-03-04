@@ -48,6 +48,7 @@ def _download_price(ticker, period="5y", interval="1d"):
         df = object.history(period=period, interval=interval).\
             rename_axis('date_raw').reset_index().\
             assign(Ticker=ticker)
+        df['date_ym'] = df['date_raw'].dt.strftime("%Y%m")
     except Exception as e:
         print(f'\n Error in downloading {ticker}')
     return df
@@ -61,6 +62,7 @@ def _download_fin(ticker):
             [object.financials.T, object.balance_sheet.T, object.cash_flow.T], axis=1).\
             rename_axis('date_raw').reset_index().\
             assign(Ticker=ticker)
+        df['date_ym'] = df['date_raw'].dt.strftime("%Y%m")
     except Exception as e:
         print(f'\n Error in downloading {ticker}')
     return df
@@ -74,6 +76,7 @@ def _download_finQ(ticker):
             [object.get_financials(freq='quarterly').T, object.get_balancesheet(freq='quarterly').T, object.get_cashflow(freq='quarterly').T], axis=1).\
             rename_axis('date_raw').reset_index().\
             assign(Ticker=ticker)
+        df['date_ym'] = df['date_raw'].dt.strftime("%Y%m")
     except Exception as e:
         print(f'\n Error in downloading {ticker}')
     return df

@@ -1,5 +1,5 @@
-date = '202312'
-eval_window = ['20240101', '20240131']
+date = '202401'
+eval_window = [202402, 202402]
 
 import pandas as pd
 from pandas.tseries.offsets import BMonthBegin, BMonthEnd
@@ -11,15 +11,18 @@ writer = pd.ExcelWriter(fr'.\02.Signals\rankings_{date}.xlsx')
 # Read data
 ###########################################################
 base = pd.read_parquet('02.Signals/Data/price.parquet')
-base = normalize_date(df=base, from_to=eval_window)
+base.columns = [x.lower() for x in base.columns]
+rows = (eval_window[0] <= base.date_ym.astype(int)) & (base.date_ym.astype(int) <= eval_window[0])
+base = base[rows]
 base['ret'] = 1 + base.groupby('ticker')['close'].pct_change()
 base['cum_ret'] = base.groupby('ticker')['ret'].cumprod()
-base['assess_date'] = base.groupby('ticker')['date_ymd'].transform(lambda x: f"{min(x)}-{max(x)}")
+base['assess_date'] = base.assign(date_ymd=base['date_raw'].dt.strftime('%Y%m%d'))\
+    .groupby('ticker')['date_ymd'].transform(lambda x: f"{min(x)}-{max(x)}")
 base['trade_price'] = base.groupby('ticker')['close'].transform('last')
 ret = base.groupby('ticker').tail(1)
 
 df = pd.read_excel(fr'.\02.Signals\{date}.xlsx')
-dims = df.columns[:18].tolist()
+dims = _dimension
 cat = []
 anomalies = []
 for c, a in _anomalies.items():
@@ -31,7 +34,7 @@ df['selected'] = df[cat].sum(axis=1)
 df['selected, wgt'] = df[cat].gt(0).sum(axis=1)
 
 df = df.merge(ret[['ticker', 'trade_price', 'assess_date', 'cum_ret']], how='left', on='ticker')
-rows = (df[['mega_k', 'mega_v', 'lg_k', 'lg_v', 'mid_k', 'mid_v', 'small_k', 'small_v']] < 0).all(axis=1)
+rows = (df[_size_style] < 0).all(axis=1)
 dfs = {"non_micro": df[~rows].set_index(dims), "micro": df[rows].set_index(dims)}
 
 ###########################################################
@@ -42,7 +45,7 @@ cols = ['trade_price', 'assess_date', 'cum_ret', 'selected', 'selected, wgt',
 for p, df in dfs.items():
     df[cols].to_excel(writer, sheet_name=f"{p}_tickers")
 
-    with open(fr'.\02.Signals\Reporting\{p}_{date}.html', 'w') as file:
+    with open(fr'.\02.Signals\Reporting\BT_{p}_{date}.html', 'w') as file:
         df_zero = pd.DataFrame()
         file.write('<html>\n<body>\n')
         # Write first HTML table
@@ -68,7 +71,7 @@ for p, df in dfs.items():
         file.write('</body>\n</html>')
 
 
-    with open(fr'.\02.Signals\Reporting\{p}_individuals_{date}.html', 'w') as file:
+    with open(fr'.\02.Signals\Reporting\BT_{p}_individuals_{date}.html', 'w') as file:
         df_zero = pd.DataFrame()
         for c, a in _anomalies.items():
             for a1 in a:
@@ -83,4 +86,3 @@ for p, df in dfs.items():
         file.write('</body>\n</html>')
 
 writer.close()
-

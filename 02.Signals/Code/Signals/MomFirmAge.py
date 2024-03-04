@@ -16,6 +16,7 @@ def MomFirmAge(base=base, keep_all=False):
     if keep_all:
         return df
     else:
+        print('Completed: MomFirmAge')
         return df[['ticker', 'date_ym', 'MomFirmAge']]
 
 #df = MomFirmAge(base, 5)
