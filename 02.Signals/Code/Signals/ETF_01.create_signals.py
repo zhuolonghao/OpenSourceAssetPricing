@@ -1,13 +1,19 @@
 # Instruction: change the date
-date = '202401'
+date = '202402'
 
 import pandas as pd
 import pyarrow.parquet
 import numpy as np
 from datetime import datetime
 from functools import reduce
+import matplotlib.pyplot as plt
+from matplotlib.colors import LinearSegmentedColormap,ListedColormap, BoundaryNorm, Normalize
+from matplotlib.backends.backend_pdf import PdfPages
+
+
 exec(open('_utility/_binning.py').read())
 exec(open('_utility/_data_loading.py').read())
+exec(open('_utility/_anomaly_portfolio.py').read())
 
 _dfs = {}
 print('Process-1a: read the metadata and append its ranks in each anomaly')
@@ -15,6 +21,78 @@ base = pd.read_parquet('02.Signals/Data/etf_price_monthly.parquet')
 base.columns = [x.lower() for x in base.columns]
 rows = base['date_ym'].le(date)
 base = base[rows]
+base = base.sort_values(["ticker", "date_ym"])
+
+df_plot = base.copy()
+df_plot['close'] = base.groupby('ticker')['close'].pct_change(1)
+df_plot['date_ym'] = pd.to_datetime(df_plot['date_ym'], format='%Y%m')
+df_plot['year'] = df_plot['date_ym'].dt.strftime("%Y")
+df_plot['month'] = df_plot['date_ym'].dt.strftime("%b")
+df_plot = df_plot[df_plot['year'] >= '2013']
+
+cols =['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
+       'Oct', 'Nov', 'Dec']
+# colors = ['red', 'green']  # Assign colors to the ranges
+# cmap = ListedColormap(colors)
+colors = [(0, 'red'), (0.5, 'white'), (1, 'green')]
+cmap = LinearSegmentedColormap.from_list('CustomMap', colors)
+norm = Normalize(vmin=-0.03, vmax=0.03)
+
+with PdfPages('03.Portfolios/ETF_s2.pdf') as pdf:
+    num_plots = len(_etf_s2)
+    num_pages = (num_plots + 5) // 6  # Calculate the number of pages needed (each page will contain 3x2 plots)
+
+    for page in range(num_pages):
+        fig = plt.figure(figsize=(12, 8))
+        for ix in range(6):
+            plot_index = page * 6 + ix
+            if plot_index < num_plots:
+                plt.subplot(2, 3, ix + 1)
+                ticker = list(_etf_s2)[plot_index]
+                rows = df_plot.ticker.eq(ticker)
+                df = df_plot[rows].pivot(index='year', columns='month', values='close')
+                df = df[cols]
+                plt.imshow(df, cmap=cmap, norm=norm)
+                for i in range(df.shape[0]):
+                    for j in range(df.shape[1]):
+                        if ~np.isnan(df.iloc[i, j]):
+                            plt.text(j, i, f"{df.iloc[i, j] * 100: .1f}", fontsize=6, horizontalalignment='center',
+                                     verticalalignment='center')
+                plt.title(f'Monthly Return: {_etf_s2[ticker]}')
+                plt.xticks(range(df.shape[1]), df.columns, rotation='vertical')  # Setting x-axis labels
+                plt.yticks(range(df.shape[0]), df.index)  # Setting y-axis labels
+        plt.tight_layout()
+        pdf.savefig(fig)  # Save the current page to the PDF
+        plt.close()
+
+with PdfPages('03.Portfolios/ETF_sector.pdf') as pdf:
+    num_plots = len(_etf_s)
+    num_pages = (num_plots + 5) // 6  # Calculate the number of pages needed (each page will contain 3x2 plots)
+
+    for page in range(num_pages):
+        fig = plt.figure(figsize=(12, 8))
+        for i in range(6):
+            plot_index = page * 6 + i
+            if plot_index < num_plots:
+                plt.subplot(2, 3, i + 1)
+                ticker = list(_etf_s)[plot_index]
+                rows = df_plot.ticker.eq(ticker)
+                df = df_plot[rows].pivot(index='year', columns='month', values='close')
+                df = df[cols]
+                plt.imshow(df, cmap=cmap, norm=norm)
+                for i in range(df.shape[0]):
+                    for j in range(df.shape[1]):
+                        if ~np.isnan(df.iloc[i, j]):
+                            plt.text(j, i, f"{df.iloc[i, j] * 100: .1f}", fontsize=6, horizontalalignment='center',
+                                     verticalalignment='center')
+                plt.title(f'Monthly Return: {_etf_s[ticker]}')
+                plt.xticks(range(df.shape[1]), df.columns, rotation='vertical')  # Setting x-axis labels
+                plt.yticks(range(df.shape[0]), df.index)  # Setting y-axis labels
+        plt.tight_layout()
+        pdf.savefig(fig)  # Save the current page to the PDF
+        plt.close()
+
+
 print('Process-1b: read the fama-french datase')
 ff = pd.read_csv('02.Signals/Data/F-F_Research_Data_Factors.csv',
                  skiprows=4, usecols=list(range(0, 5)), header=None)

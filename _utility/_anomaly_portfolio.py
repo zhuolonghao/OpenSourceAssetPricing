@@ -37,3 +37,28 @@ _portfolios = {
     'GPlag': {'GPlag_q': lambda x: x==True},
     'AccrualsBM': {'AccrualsBM_q': lambda x: x==True},
 }
+
+_etf_s2 = {
+    'MGK': 'MG', 'VUG': 'LG','VOT': 'MidG',
+    'MGV': 'MV', 'VTV': 'LV','VOE': 'MidV',
+    'VBK': 'SG', 'VBR': 'SV','VOO': 'SPY'
+}
+
+
+_etf_s = {
+    'XLE': 'Energy',
+    'XLB': 'Material',
+    'XLU': 'Utility',
+
+    'FDIS': 'Consumer Staple',
+    'FSTA': 'Consumer Discretionary',
+    'FIDU': 'Industrial',
+
+    'XLC': 'Communication',
+    'XLK': 'I.T.',
+    'XLV': 'Health Care',
+
+    'XLF': 'Financials',
+    'XLRE': 'Real Estate',
+
+}
