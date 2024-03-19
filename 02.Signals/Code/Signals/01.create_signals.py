@@ -48,6 +48,8 @@ ff[['mkt-rf', 'smb', 'hml', 'rf']] = ff[['mkt-rf', 'smb', 'hml', 'rf']]/100
 # Price-based factors
 ###########################################################
 print('Process-1c: create the anomaly attributes')
+exec(open('02.Signals/Code/Signals/MomCurve.py').read())
+_dfs['MomCurve'] = MomCurve()
 exec(open('02.Signals/Code/Signals/MomRev.py').read())
 _dfs['MomRev'] = MomRev()
 exec(open('02.Signals/Code/Signals/MomFirmAge.py').read())
