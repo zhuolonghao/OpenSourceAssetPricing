@@ -20,27 +20,30 @@ df2 = df.reset_index()
 for port, conditions_dict in _portfolios.items():
     df_filter = df2.copy()
     print(f'producing: {port}')
-    for column, condition in conditions_dict.items():
-        df_filter = df_filter[condition(df_filter[column])]
-        print(df_filter.shape)
-    ###########################################################
-    # filtering based on portfolio conditions
-    ###########################################################
-    df_filter.sort_values(['sector', 'exchange'], inplace=True)
-    # Number of rows in each subframe
-    rows_per_subframe = 20
-    # Calculate the number of subframes needed
-    num_subframes = -(-len(df_filter) // rows_per_subframe)  # Ceiling division to get the number of subframes
-    # Split the DataFrame into subframes
-    subframes = np.array_split(df_filter, num_subframes)
-    # Displaying the subframes
-    pdf = PdfPages(fr'.\03.Portfolios\{port}.pdf')
-    for i, subframe in enumerate(subframes):
-        print(f"producing charts for {port}")
-        fig = plt.figure(figsize=(8.5, 11))
-        for j in range(subframe.shape[0]):
-            _ticker_chart(j + 1, subframe.iloc[j], sector_color, hexagon_vertices)
-        plt.tight_layout()
-        pdf.savefig(fig)
-        plt.close()
-    pdf.close()
+    try:
+        for column, condition in conditions_dict.items():
+            df_filter = df_filter[condition(df_filter[column])]
+            print(df_filter.shape)
+        ###########################################################
+        # filtering based on portfolio conditions
+        ###########################################################
+        df_filter.sort_values(['sector', 'exchange'], inplace=True)
+        # Number of rows in each subframe
+        rows_per_subframe = 20
+        # Calculate the number of subframes needed
+        num_subframes = -(-len(df_filter) // rows_per_subframe)  # Ceiling division to get the number of subframes
+        # Split the DataFrame into subframes
+        subframes = np.array_split(df_filter, num_subframes)
+        # Displaying the subframes
+        pdf = PdfPages(fr'.\03.Portfolios\{port}.pdf')
+        for i, subframe in enumerate(subframes):
+            print(f"producing charts for {port}: {i+1}")
+            fig = plt.figure(figsize=(8.5, 11))
+            for j in range(subframe.shape[0]):
+                _ticker_chart(j + 1, subframe.iloc[j], sector_color, hexagon_vertices)
+            plt.tight_layout()
+            pdf.savefig(fig)
+            plt.close()
+        pdf.close()
+    except Exception as e:
+        print(f"-------{e}---------")

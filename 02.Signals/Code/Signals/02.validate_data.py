@@ -59,7 +59,7 @@ for p, df in dfs_by_micro.items():
         .set_index(['style', 'index']).to_excel(writer, sheet_name=f"{p}_style")
 
 writer.close()
-# 202402
+# 202402 updated:
 # cfp_q                      60
 # BM_q                       60
 # CBOperProfLagAT_alt_q      52

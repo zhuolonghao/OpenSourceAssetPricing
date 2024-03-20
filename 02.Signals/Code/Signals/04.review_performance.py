@@ -50,7 +50,8 @@ dfs = {"non_micro": df[~rows].set_index(dims), "micro": df[rows].set_index(dims)
 # Analysis
 ###########################################################
 cols = ['trade_price', 'assess_date', 'cum_ret', 'selected', 'selected, wgt',
-        'momentum', 'seasonality', 'reversal', 'valuation', 'accruals', 'profitability', 'investment', 'asset_comp', '13F'] + anomalies
+        'momentum', 'seasonality', 'reversal', 'valuation', 'profitability', '13F',
+        'NYSE_AMEX', 'Manufacturers', 'nonFin', '6mMom_StMom'] + anomalies
 for p, df in dfs.items():
     df[cols].to_excel(writer, sheet_name=f"{p}_tickers")
 

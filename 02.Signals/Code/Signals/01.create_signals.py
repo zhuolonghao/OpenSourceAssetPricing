@@ -77,9 +77,12 @@ _dfs['Reversals'] = Reversals(base, others)
 ###########################################################
 # Accounting-based factors
 ###########################################################
+# Rely on Yahoo
+exec(open('02.Signals/Code/Signals/f_alternative.py').read())
+_dfs['yahoo'] = valuation_profitability(others).assign(date_ym=date)
 # Valuation
 exec(open('02.Signals/Code/Signals/f_valuation.py').read())
-_dfs['valuation'] = valuation(finQ).assign(date_ym=date)
+_dfs['valuation'] = valuation(finQ).assign(date_ym=date).drop(columns=['BM_q', 'EntMult_q', 'cfp_q'])
 # profitability
 exec(open('02.Signals/Code/Signals/f_profitability.py').read())
 _dfs['profitability'] = profitability(finQ).assign(date_ym=date)
