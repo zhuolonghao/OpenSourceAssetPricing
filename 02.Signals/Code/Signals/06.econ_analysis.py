@@ -103,7 +103,7 @@ charts = pd.DataFrame(charts)
 #######################################################################
 # Printing
 #######################################################################
-with PdfPages(fr'.\02.Signals\Reporting\econ_{date}.pdf', keep_empty=False) as pdf:
+with PdfPages(fr'.\02.Signals\econ_{date}.pdf', keep_empty=False) as pdf:
 
     # Set letter size (8.5 x 11 inches) for each page
     fig, axes = plt.subplots(figsize=(8.5, 11), nrows=2, ncols=1)

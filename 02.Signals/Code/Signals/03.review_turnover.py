@@ -3,7 +3,7 @@ import pandas as pd
 exec(open('_utility/_anomaly_portfolio.py').read())
 exec(open('_utility/_data_loading.py').read())
 
-writer = pd.ExcelWriter(fr'.\02.Signals\turnover_{curr_date}.xlsx')
+writer = pd.ExcelWriter(fr'.\02.Signals\Reporting\turnover_{curr_date}.xlsx')
 print(fr"Process-1: review the portfolio turnover: {curr_date} vs {prev_date} and save in .\02.Signals\turnover_{curr_date}.xlsx")
 ###########################################################
 # Read data

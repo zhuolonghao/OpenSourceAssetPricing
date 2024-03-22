@@ -140,6 +140,6 @@ anomaly2['vote'] = anomaly2[['Mom',
        'MomInt', 'MomRev', 'Mom_m02_m11_ret', 'Mom_m02_m11_sign', 'STreversal',
        'MRreversal', 'LRreversal', 'MomResiduals6m', 'MomResiduals12m',
        'Season_0205', 'OffSeason_0205']].sum(axis=1)
-anomaly2.set_index('vote', append=True).to_excel(fr'02.Signals\Reporting\ETF_{date}.xlsx')
+anomaly2.set_index('vote', append=True).to_excel(fr'02.Signals\ETF_{date}.xlsx')
 
 print('Completed: ETF')
