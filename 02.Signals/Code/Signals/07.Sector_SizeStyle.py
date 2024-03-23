@@ -9,6 +9,8 @@ from functools import reduce
 exec(open('_utility/_binning.py').read())
 exec(open('_utility/_data_loading.py').read())
 
+writer = pd.ExcelWriter(fr'.\02.Signals\s2ss_{date}.xlsx')
+
 _dfs = {}
 print('Process-1: read the metadata and append its ranks in each anomaly')
 ref = pd.read_excel("./_data/_total_gics_style.xlsx")
@@ -52,6 +54,7 @@ output2 = output[~rows].copy()
 
 _dfs={}
 _dfs_wgt={}
+_dfs_cnt={}
 cols = ['mega_growth', 'mega_value',
         'large_growth', 'large_value', 'mid_growth', 'mid_value','small_growth', 'small_value']
 metrics = ['ret_1m', 'ret_6m', 'ret_6m_gap6m']
@@ -62,3 +65,27 @@ for ss in cols:
     _dfs[ss] = tmp.groupby('sector', as_index=False)[metrics].mean().assign(ss=ss)
     tmp[metrics] = tmp[metrics].multiply(tmp[ss], axis=0)/100
     _dfs_wgt[ss] = tmp.groupby('sector', as_index=False)[metrics].sum().assign(ss=ss)
+    _dfs_cnt[ss] = tmp.groupby('sector', as_index=False)['ticker'].count().assign(ss=ss)
+
+rows = ['Energy', 'Materials',   # high sensitivity, commodities price
+        'Industrials', 'Consumer Discretionary',    # high sensitivity, consumer confidence + business investment.
+        'Communication Services', 'Information Technology',     # moderate sensitivity
+        'Financials', 'Real Estate',    # moderate sensitivity, interest rate, credit, CRE,
+        'Consumer Staples', 'Health Care', 'Utilities']  # low sensitivity
+
+final = pd.pivot(pd.concat(_dfs.values(), axis=0, ignore_index=True),
+             index='sector', columns='ss')
+final.reindex(rows)[pd.MultiIndex.from_product([metrics, cols])]\
+    .to_excel(writer, sheet_name='EW')
+
+final = pd.pivot(pd.concat(_dfs_wgt.values(), axis=0, ignore_index=True),
+                 index='sector', columns='ss')
+final.reindex(rows)[pd.MultiIndex.from_product([metrics, cols])]\
+    .to_excel(writer, sheet_name='VW')
+
+final = pd.pivot(pd.concat(_dfs_cnt.values(), axis=0, ignore_index=True),
+             index='sector', columns='ss')
+final.reindex(rows)[pd.MultiIndex.from_product([['ticker'], cols])]\
+    .to_excel(writer, sheet_name='counts')
+
+writer.close()
