@@ -6,13 +6,14 @@ def MomCurve(base=base, keep_all=False):
     df['ret_1m'] = df.groupby('ticker')['close'].pct_change(1)
     df['ret_3m'] = df.groupby('ticker')['close'].pct_change(3)
     df['ret_6m'] = df.groupby('ticker')['close'].pct_change(6)
+    df['ret_6m_gap6m'] = df.groupby('ticker')['close'].pct_change(6).shift(7)
     df['ret_12m'] = df.groupby('ticker')['close'].pct_change(12)
 
     df['ret_1m_gap1'] = df.groupby('ticker')['ret_1m'].shift(1)
     df['ret_m02_m11'] = df.groupby('ticker')['ret_1m_gap1'].transform(lambda x: x.rolling(10, 6).mean())
 
     df = df[['ticker', 'exchange', 'date_ym', 'close',
-             'ret_1m',  'ret_3m', 'ret_6m', 'ret_12m', 'ret_m02_m11']][
+             'ret_1m',  'ret_3m', 'ret_6m', 'ret_12m', 'ret_m02_m11', 'ret_6m_gap6m']][
         df.date_ym.ge("202301")]
 
     df['Mom_1m'] = df.groupby('date_ym', group_keys=False)['ret_1m'].apply(lambda x: _bin(x, 10)).astype(str)
