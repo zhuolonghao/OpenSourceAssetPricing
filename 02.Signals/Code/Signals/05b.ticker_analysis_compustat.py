@@ -21,9 +21,9 @@ print('Process-1: read the metadata and append its ranks in each anomaly')
 print(' Process-1a: read metadata from ./_data/_total_gics_style.xlsx')
 ref = pd.read_excel("./_data/_total_gics_style.xlsx")
 ref.columns = [x.lower() for x in ref.columns]
-ref['ticker'] = ref['ticker'].transform(lambda x: str(x).replace(".", "-") )
+ref['ticker'] = ref['ticker'].transform(lambda x: str(x).replace(".", "-"))
 ref['date_ym'] = date
-_dfs['ref'] = ref # this is important to make sure the anomalies aligned.
+_dfs['ref'] = ref  # this is important to make sure the anomalies aligned.
 
 print(' Process-1b-1: read the monthly price data')
 base = pd.read_parquet('02.Signals/Data/price_monthly.parquet')
@@ -48,7 +48,7 @@ others['date_ym'] = date
 ###########################################################
 print('Process-1c: create the anomaly attributes')
 exec(open('02.Signals/Code/Signals/MomCurve.py').read())
-cols =['ticker', 'date_ym', 'ret_1m', 'ret_6m', 'ret_m02_m11', 'ret_6m_gap6m']
+cols = ['ticker', 'date_ym', 'ret_1m', 'ret_6m', 'ret_m02_m11', 'ret_6m_gap6m']
 _dfs['MomCurve'] = MomCurve(keep_all=True)[cols]
 exec(open('02.Signals/Code/Signals/f_alternative.py').read())
 cols = ["ticker", "marketcap", "enterprisetoebitda", "pricetobook", "returnonassets"]
@@ -66,70 +66,82 @@ print("""Process-1d: merge all anomaly attributes.
 """)
 
 output = reduce(lambda left, right: pd.merge(left, right, on=['ticker', 'date_ym'], how='left'),
-                _dfs.values())\
-    .fillna('-999')\
-    .replace({'nan': '-998'})\
+                _dfs.values()) \
+    .fillna('-999') \
+    .replace({'nan': '-998'}) \
     .set_index('ticker')
 
 rows = (output[_size_style].astype(float) < 0).all(axis=1)
-output['micro_flag']='non-micro'
-output.loc[rows,'micro_flag']='micro'
-#output = output[~rows]
+output['micro_flag'] = 'non-micro'
+output.loc[rows, 'micro_flag'] = 'micro'
+output2 = output[~rows] # excluding micro stocks.
 
 del base, finQ, others, ref
 #######################################################################################
-df = pd.read_excel(fr'.\02.Signals\rankings_{date}.xlsx',  sheet_name=focus)
-for key, value in _anomalies.items():
-    df[key] = df[key] / len(value)
-df2 = df.reset_index()
+key_rows = []
+key_index = ['ticker', 'size_style', 'gics']
+key_size_style = ['mega_growth', 'mega_value', 'large_growth','large_value',
+                  'mid_growth', 'mid_value', 'small_growth', 'small_value']
+key_gics = ['sector', 'industry group', 'industry', 'sub-industry']
+key_metrics = {
+    'Count': 'count', 'Mkt_Cap': 'marketcap',
+    'Mom_1m': 'ret_1m', 'Mom_6m': 'ret_6m', 'Mom_int': 'ret_6m_gap6m', 'Mom_m02m11': 'ret_m02_m11',
+    'P/B': 'pricetobook', 'EV/EBITDA': 'enterprisetoebitda', 'GP/At': 'profit_to_asset', 'RoA': 'returnonassets'
+}
 
+df_ticker_total = pd.DataFrame(columns=key_index + list(key_metrics.keys()))
+df_ticker_nonmicro = pd.DataFrame(columns=key_index + list(key_metrics.keys()))
+
+df = pd.read_excel(fr'.\02.Signals\rankings_{date}.xlsx', sheet_name=focus)
 for port, conditions_dict in _portfolios.items():
-    df_filter = df2.copy()
+    df_filter = df.copy()
     print(f'producing: {port}')
     try:
         for column, condition in conditions_dict.items():
             df_filter = df_filter[condition(df_filter[column])]
         print(f'it has {df_filter.shape[0]} tickers')
 
-        ticker = 'CVNA'
-        metric = 'marketcap'
-        dim = 'sector'
-        dim_value = df_filter[df_filter.ticker == ticker][dim].values[0]
-        df_plot = output[output[dim].eq(dim_value)].copy()
-        rows = df_plot[metric].isin(['-999', '-998'])
-        df_plot2 = df_plot[~rows][metric].astype(float).sort_values().copy()
-        min, max = df_plot2.min(), df_plot2.max()
-        df_plot3 = np.log((df_plot2 - min) / (max - min) * (1 - 2 * np.finfo(float).eps) + np.finfo(float).eps)
-        tmp = winsorize(df_plot3, limits=[0.005, 0.005], inclusive=(False, False))
-        df_plot3 = pd.Series(tmp - tmp.min(), index=df_plot3.index)
+        ticker_to_process = [x for x in df_filter.ticker.unique() if x not in key_rows]
+        for ticker in ticker_to_process:
+            key_rows.append(ticker)
+            for dim in key_gics:
+                dim_value = df_filter[df_filter.ticker == ticker][dim].values[0]
 
-        fig, ax = plt.subplots(figsize=(5, 2.5))
-        num_data_points = len(df_plot3)
-        df_plot3.plot(kind='bar', use_index=True, ax=ax)
+                df_plot = output[output[dim].eq(dim_value)].copy()
+                tmp_ticker = df_plot.loc[ticker][key_size_style].astype(float)
+                size_style_value = tmp_ticker.index[tmp_ticker>=0].str.cat(sep='//')
+                count_value = df_plot.shape[0]
+                cols = list(key_metrics.values())[1:]
+                metric_values = df_plot[cols].astype(float)\
+                    .apply(lambda x: f"{(x.loc[ticker] >= x).mean()*100:.0f}%")
+                tmp = pd.DataFrame(
+                    [[ticker, size_style_value, f"{dim}={dim_value}", count_value] + list(metric_values)],
+                    columns=key_index + list(key_metrics.keys())
+                    )
+                df_ticker_total = pd.concat([df_ticker_total, tmp], ignore_index=True)
 
-        ax.set_xticklabels([])
-        ax.yaxis.set_visible(False)
-        ax.spines['top'].set_visible(False)
-        ax.spines['right'].set_visible(False)
-        ax.spines['left'].set_visible(False)
-
-        v_loc = df_plot3.index.get_loc(ticker)
-        ax.axvline(x=v_loc, color='r', linestyle='--')
-
-        tick_positions = np.linspace(0, num_data_points - 1, 11).astype(int)
-        ax.xaxis.set_major_locator(plt_ticker.FixedLocator(tick_positions))
-
-        plt.tight_layout()
-        plt.show()
-
-
+                df_plot = output2[output2[dim].eq(dim_value)].copy()
+                tmp_ticker = df_plot.loc[ticker][key_size_style].astype(float)
+                size_style_value = tmp_ticker.index[tmp_ticker>=0].str.cat(sep='//')
+                count_value = df_plot.shape[0]
+                cols = list(key_metrics.values())[1:]
+                metric_values = df_plot[cols].astype(float)\
+                    .apply(lambda x: f"{(x.loc[ticker] >= x).mean()*100:.0f}%")
+                tmp = pd.DataFrame(
+                    [[ticker, size_style_value, f"{dim}={dim_value}", count_value] + list(metric_values)],
+                    columns=key_index + list(key_metrics.keys())
+                    )
+                df_ticker_nonmicro = pd.concat([df_ticker_nonmicro, tmp], ignore_index=True)
 
     except Exception as e:
         print(f"-------{e}---------")
 
+df_ticker_total.set_index(key_index, inplace=True)
+df_ticker_total.columns = pd.MultiIndex.from_product([['Total'], df_ticker_total.columns],
+                                                     names=['Population', 'Metric'])
+df_ticker_nonmicro.set_index(key_index, inplace=True)
+df_ticker_nonmicro.columns = pd.MultiIndex.from_product([['Excl. Micro'], df_ticker_nonmicro.columns],
+                                                        names=['Population', 'Metric'])
+final = df_ticker_total.join(df_ticker_nonmicro, how='left')
+final.sort_index(level=0).to_excel(fr'.\03.Portfolios\tickers.xlsx')
 
-ticker = 'CVNA'
-metric = 'marketcap'
-dim = 'sector'
-dim_value = df_filter[df_filter.ticker == ticker][dim].values[0]
-df_plot = output[output[dim].eq(dim_value)].copy()
