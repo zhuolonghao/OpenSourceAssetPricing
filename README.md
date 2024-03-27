@@ -31,11 +31,11 @@ https://shorturl.at/pHTU2
 
 - **rankings_yyyymm.xlsx** picks the winning companies by [anomalies](https://github.com/zhuolonghao/OpenSourceAssetPricing/blob/main/02.Signals/Code/Signals/04.review_performance.py) 
 
-	|Ticker|Mom_6m|...|BM_q|Selected	|Selected, wgt|Momentum|Valuation|...|Seasonality|
-	|---      |---     			|---		|---			|--|---|---|---|---|---|
-	|MSFT|Flase|...|False|6|3|1|0|...|3|
-	|PR|False|...|False|8|3|5|0|...|0|
-	|OPRT|False|...|True|4|1|0|3|...|5|
+	|Ticker|Mom_6m|...|BM_q|Selected	|Selected, wgt|Momentum|Valuation|...|Seasonality|MomRev|
+	|---      |---     			|---		|---			|--|---|---|---|---|---|---|
+	|MSFT|Flase|...|False|6|3|1|0|...|3|True|
+	|PR|False|...|False|8|3|5|0|...|0|False|
+	|OPRT|False|...|True|4|1|0|3|...|5|False|
 
 ## Other Outputs
 - **validate_yyyymm.xlsx** examines how many tickers are not considerd for each anomaly due to data quality (missing values) / restrictions (e.g., limiting to NYSE/AMEX).
