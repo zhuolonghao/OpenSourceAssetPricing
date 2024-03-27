@@ -1,7 +1,7 @@
 def valuation_profitability(others, keep_all=False):
     var_base = ['ticker', 'beta', 'sector']
     # valuation
-    var_bm = ['pricetobook']
+    var_bm = ['pricetobook', 'marketcap']
     var_EntMult = ['enterprisetoebitda']
     var_cfp = ['operatingcashflow', 'marketcap']
     var_free_cfp = ['freecashflow', 'marketcap']
