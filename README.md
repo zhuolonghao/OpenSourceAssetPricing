@@ -19,7 +19,7 @@ https://shorturl.at/pHTU2
 	|VUG|81.00|7.75|3.25|...|10.0|
 	
 ### Ticker buys
-- **s2ss_yyyymm.xlsx** picks the winning group characterized by sector x Size & Style. [template]((https://github.com/zhuolonghao/OpenSourceAssetPricing/blob/main/02.Signals/s2ss_yyyymm.xlsx)) and [code](https://github.com/zhuolonghao/OpenSourceAssetPricing/blob/main/02.Signals/Code/Signals/07.Sector_SizeStyle.py)
+- **s2ss_yyyymm.xlsx** picks the winning group characterized by sector x Size & Style. [template]((https://github.com/zhuolonghao/OpenSourceAssetPricing/blob/main/02.Signals/s2ss_yyyymm.xlsx) and [code](https://github.com/zhuolonghao/OpenSourceAssetPricing/blob/main/02.Signals/Code/Signals/07.Sector_SizeStyle.py)
  
 - **yyyymm.xlsx** scores companies by [anomalies](https://github.com/zhuolonghao/OpenSourceAssetPricing/blob/main/02.Signals/Code/Signals/01.create_signals.py) 
 
