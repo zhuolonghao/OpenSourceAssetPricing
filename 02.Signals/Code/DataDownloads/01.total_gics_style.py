@@ -2,7 +2,9 @@ import os, re, time, shutil
 import webbrowser as web
 import pandas as pd
 import numpy as np
-date = '202402'
+import os
+
+date = '202403'
 
 ###########################################################################################################
 # GICS_8/Style/Size
@@ -25,12 +27,12 @@ _etf = {
 }
 for etf, link in _etf.items():
     web.open(link)
-    time.sleep()
+    time.sleep(1)
 
 
 input("Checkpoint: Download ETF holdings manually. Press Enter once done")
 print(f'Process-1: write all ETF holdings to the file .\_data\{date}.xlsx')
-path_downloads = r"C:\Users\zlhte\Downloads"
+path_downloads = r"C:\Users\longh\Downloads"
 downloads = [x for x in os.listdir(path_downloads) if 'ProductDetailsHoldings' in x]
 downloads.insert(0, downloads.pop())
 for etf, csv in zip(_etf.keys(), downloads):
@@ -103,12 +105,12 @@ for csv in downloads:
     shutil.copy(f"{path_downloads}\{csv}", f"{path_archive}\{csv}")
     os.remove(f"{path_downloads}\{csv}")
 
-# sector: 3709
+# sector: 3693
 # mega_growth: 82
 # mega_value: 141
 # large_growth: 207
 # large_value: 350
 # mid_growth: 150
-# mid_value: 200
-# small_growth: 637
-# small_value: 853
+# mid_value: 201
+# small_growth: 635
+# small_value: 852

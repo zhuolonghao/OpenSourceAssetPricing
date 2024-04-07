@@ -1,4 +1,4 @@
-curr_date, prev_date = '202402', '202401'
+curr_date, prev_date = '202403', '202402'
 import pandas as pd
 exec(open('_utility/_anomaly_portfolio.py').read())
 exec(open('_utility/_data_loading.py').read())
@@ -46,7 +46,7 @@ for size in ["non_micro", "micro"]:
     {size}: reporting turnover under each anomaly
         format is like size - anomaly: # in curr, # in prev, % of new tickers in curr
     """)
-    for port, conditions_dict in portfolios.items():
+    for port, conditions_dict in _portfolios.items():
        tmp_curr_filter = tmp_curr.copy()
        tmp_prev_filter = tmp_prev.copy()
        for column, condition in conditions_dict.items():
