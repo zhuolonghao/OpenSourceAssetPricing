@@ -16,12 +16,16 @@ lvl3 = ['DPCERA', 'DGDSRA', 'DDURRA', 'DNMVRA', 'DNPVRA', 'DMVPRA', 'DFFFRA', 'D
 beakey = '0FAD9DAD-B778-42E9-BA0E-454F0DE7BC7D'
 _real = {}
 _price = {}
+_pce = {}
 for y in years:
     _real[y] = beaapi.get_data(beakey, datasetname='NIPA', TableName='T20803', Frequency='M', Year=y)
     _price[y] = beaapi.get_data(beakey, datasetname='NIPA', TableName='T20804', Frequency='M', Year=y)
+    _pce[y] = beaapi.get_data(beakey, datasetname='NIPA', TableName='T20805', Frequency='M', Year=y)
+
 
 real = pd.concat(_real.values(), axis=0).sort_values(['SeriesCode', 'TimePeriod'])
 price = pd.concat(_price.values(), axis=0).sort_values(['SeriesCode', 'TimePeriod'])
+pce = pd.concat(_pce.values(), axis=0).sort_values(['SeriesCode', 'TimePeriod'])
 
 for name, lag in {'MoM': 1, 'QoQ': 3, 'YoY': 12}.items():
     real['pct_chg'] = real.groupby(['SeriesCode'])['DataValue'].pct_change(lag)
@@ -47,8 +51,37 @@ for name, lag in {'MoM': 1, 'QoQ': 3, 'YoY': 12}.items():
     plt.xticks(rotation=0)
     plt.tick_params(left=False, labelleft=False)
     plt.tight_layout()
-    plt.savefig(fr'02.Signals\econ_PCER_{name}.pdf', bbox_inches='tight')
+    plt.savefig(fr'02.Signals\Econ\econ_PCER_{name}.pdf', bbox_inches='tight')
     plt.show()
+
+lvl2 = [ x[:-1] + 'C' for x in lvl2]
+for name, lag in {'MoM': 1, 'QoQ': 3, 'YoY': 12}.items():
+    pce['pct_chg'] = pce.groupby(['SeriesCode'])['DataValue'].pct_change(lag)
+    rows = pce['SeriesCode'].isin(lvl2)
+    df = pce[rows].copy()
+    df['LineDescription'] = df['LineDescription'].str[:20]
+    df['rank'] = df.groupby('TimePeriod')['pct_chg'].transform(lambda x: x.rank())
+    df2 = df.groupby('SeriesCode').tail(18).pivot(index='TimePeriod', columns="LineDescription", values='rank')
+    ax = df2.plot(style='--^',  ax=plt.gca(), figsize=[16,6], legend=False, title=f'Spending: {name}')
+    ###
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.spines['left'].set_visible(False)
+    ax.set_xlabel('')
+    ax.set_xticks(range(len(df2.index)))
+    ax.set_xticklabels(df2.index)
+    ####
+    lines = ax.get_lines()
+    for line in lines:
+        x, y = line.get_data()
+        last_x, last_y = x[-1], y[-1]
+        ax.text(last_x+0.1, last_y, line.get_label(), verticalalignment='center')
+    plt.xticks(rotation=0)
+    plt.tick_params(left=False, labelleft=False)
+    plt.tight_layout()
+    plt.savefig(fr'02.Signals\Econ\econ_PCE_{name}.pdf', bbox_inches='tight')
+    plt.show()
+
 
 
 price['pct_chg'] = price.groupby(['SeriesCode'])['DataValue'].pct_change(12)
@@ -75,20 +108,24 @@ for line in lines:
 plt.xticks(rotation=0)
 plt.tick_params(left=False, labelleft=False)
 plt.tight_layout()
-plt.savefig(fr'02.Signals\econ_PCEPI_{name}.pdf', bbox_inches='tight')
+plt.savefig(fr'02.Signals\Econ\econ_PCEPI_{name}.pdf', bbox_inches='tight')
 plt.show()
 ###########################################################################################
 _real = {}
 _price = {}
+_pce = {}
 for y in years:
     try:
         _real[y] = beaapi.get_data(beakey, datasetname='NIPA', TableName='T20403', Frequency='Q', Year=y)
         _price[y] = beaapi.get_data(beakey, datasetname='NIPA', TableName='T20404', Frequency='Q', Year=y)
+        _pce[y] = beaapi.get_data(beakey, datasetname='NIPA', TableName='T20405', Frequency='Q', Year=y)
     except:
         print(f'Year {y} is not available')
 
 Qreal = pd.concat(_real.values(), axis=0).sort_values(['SeriesCode', 'TimePeriod'])
 Qprice = pd.concat(_price.values(), axis=0).sort_values(['SeriesCode', 'TimePeriod'])
+Qpce = pd.concat(_pce.values(), axis=0).sort_values(['SeriesCode', 'TimePeriod'])
+
 
 for name, lag in { 'QoQ': 1, 'YoY': 4}.items():
     Qreal['pct_chg'] = Qreal.groupby(['SeriesCode'])['DataValue'].pct_change(lag)
@@ -115,7 +152,37 @@ for name, lag in { 'QoQ': 1, 'YoY': 4}.items():
     plt.xticks(rotation=0)
     plt.tick_params(left=False, labelleft=False)
     plt.tight_layout()
-    plt.savefig(f'02.Signals\econ_PCER_details_{name}.pdf', bbox_inches='tight')  # Save the plot as a PDF file
+    plt.savefig(f'02.Signals\Econ\econ_PCER_details_{name}.pdf', bbox_inches='tight')  # Save the plot as a PDF file
+    plt.show()
+
+
+lvl3 = [ x[:-1] + 'C' for x in lvl3]
+for name, lag in { 'QoQ': 1, 'YoY': 4}.items():
+    Qpce['pct_chg'] = Qpce.groupby(['SeriesCode'])['DataValue'].pct_change(lag)
+    rows = Qpce['SeriesCode'].isin(lvl3)
+    df = Qpce[rows].copy()
+    df['LineDescription'] = df['LineDescription'].str[:20]
+    df['rank'] = df.groupby('TimePeriod')['pct_chg'].transform(lambda x: x.rank())
+    df2 = df.groupby('SeriesCode').tail(6).pivot(index='TimePeriod', columns="LineDescription", values='rank')
+    ax = df2.plot(style='--^',  ax=plt.gca(), figsize=[9.35,14.1], legend=False, title=f'Spending: {name}')
+    ###
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.spines['left'].set_visible(False)
+
+    ax.set_xlabel('')
+    ax.set_xticks(range(len(df2.index)))
+    ax.set_xticklabels(df2.index)
+    ####
+    lines = ax.get_lines()
+    for line in lines:
+        x, y = line.get_data()
+        last_x, last_y = x[-1], y[-1]
+        ax.text(last_x+0.1, last_y, line.get_label(), verticalalignment='center')
+    plt.xticks(rotation=0)
+    plt.tick_params(left=False, labelleft=False)
+    plt.tight_layout()
+    plt.savefig(f'02.Signals\Econ\econ_PCE_details_{name}.pdf', bbox_inches='tight')  # Save the plot as a PDF file
     plt.show()
 
 
@@ -144,6 +211,6 @@ for line in lines:
 plt.xticks(rotation=0)
 plt.tick_params(left=False, labelleft=False)
 plt.tight_layout()
-plt.savefig(f'02.Signals\econ_PCEPI_details_{name}.pdf', bbox_inches='tight')  # Save the plot as a PDF file
+plt.savefig(f'02.Signals\Econ\econ_PCEPI_details_{name}.pdf', bbox_inches='tight')  # Save the plot as a PDF file
 plt.show()
 

@@ -10,7 +10,7 @@ print(list_of_params)
 list_of_param_vals = beaapi.get_parameter_values(beakey, 'NIPA', 'TableID')
 print(list_of_param_vals)
 
-bea_tbl_M = beaapi.get_data(beakey, datasetname='NIPA', TableName='T20804', Frequency='M', Year='2020')
+bea_tbl_M = beaapi.get_data(beakey, datasetname='NIPA', TableName='T20805', Frequency='M', Year='2020')
 econ_vars = bea_tbl_M.groupby(['SeriesCode', 'LineDescription'], as_index=False)['LineNumber'].max()
 bea_tbl_Q = beaapi.get_data(beakey, datasetname='NIPA', TableName='T20404', Frequency='Q', Year='2020')
 econ_vars = bea_tbl_Q.groupby(['SeriesCode', 'LineDescription'], as_index=False)['LineNumber'].max()
