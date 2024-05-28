@@ -1,5 +1,5 @@
 # Instruction: change the date
-date = '202403'
+date = '202404'
 focus = 'non_micro_tickers'
 
 import pandas as pd
@@ -18,7 +18,7 @@ exec(open('_utility/_data_loading.py').read())
 _dfs = {}
 print('Process-1: read the metadata and append its ranks in each anomaly')
 
-print(' Process-1a: read metadata from ./_data/_total_gics_style.xlsx')
+print(' Process-1a: read metadata from ./_data/_total_gics_style_sub_industry.xlsx')
 ref = pd.read_excel("./_data/_total_gics_style.xlsx")
 ref.columns = [x.lower() for x in ref.columns]
 ref['ticker'] = ref['ticker'].transform(lambda x: str(x).replace(".", "-"))

@@ -1,5 +1,5 @@
 # Instruction: change the date
-date = '202403'
+date = '202404'
 
 import pandas as pd
 import pyarrow.parquet
@@ -11,7 +11,7 @@ exec(open('_utility/_data_loading.py').read())
 
 _dfs = {}
 print('Process-1: read the metadata and append its ranks in each anomaly')
-ref = pd.read_excel("./_data/_total_gics_style.xlsx")
+ref = pd.read_excel("./_data/_total_gics_style_sub_industry.xlsx")
 ref.columns = [x.lower() for x in ref.columns]
 ref['ticker'] = ref['ticker'].transform(lambda x: str(x).replace(".", "-") )
 ref['date_ym'] = date
@@ -23,6 +23,7 @@ base = pd.read_parquet('02.Signals/Data/price_monthly.parquet')
 base.columns = [x.lower() for x in base.columns]
 base = base.merge(
     ref[['ticker', 'exchange']], how='left', left_on='ticker', right_on='ticker')
+base = base.sort_values(['ticker', 'date_ym'])
 print(' Process-1b-2: read the quarter financials')
 finQ = pd.read_parquet('02.Signals/Data/finQ.parquet')
 finQ.columns = [x.lower() for x in finQ.columns]

@@ -1,215 +1,207 @@
  (VUG) , , ,  
-Holding details,2024-02-29
+Holding details,2024-03-31
  
 Stocks holdings 
  ,SEDOL,Ticker,Holdings name,Shares,Market value*,% of fund*,Sector,Market,Security depository receipt type
-,"2588173","MSFT","Microsoft Corp.",69080642,$28574516756.88,12.8388661827,"Systems Software","US",---
-,"2046251","AAPL","Apple Inc.",137329917,$24822382497.75,11.1529881655,"Technology Hardware, Storage & Periphera","US",---
-,"2379504","NVDA","NVIDIA Corp.",21809976,$17254308213.12,7.7525634504,"Semiconductors","US",---
-,"2000019","AMZN","Amazon.com Inc.",86446424,$15280269906.24,6.8656048405,"Broadline Retail","US",---
-,"B7TL820","META","Facebook Inc. Class A",20630566,$10111659313.58,4.5432873604,"Interactive Media & Services","US",---
-,"BYVY8G0","GOOGL","Alphabet Inc. Class A",55003830,$7615830301.8,3.4218820548,"Interactive Media & Services","US",---
-,"BYY88Y7","GOOG","Alphabet Inc. Class C",45232608,$6322613946.24,2.8408247485,"Interactive Media & Services","US",---
-,"2516152","LLY","Eli Lilly & Co.",7941170,$5985101005.6,2.6891762179,"Pharmaceuticals","US",---
-,"B616C79","TSLA","Tesla Inc.",25115269,$5070270505.72,2.2781321233,"Automobile Manufacturers","US",---
-,"B2PZN04","V","Visa Inc. Class A",14246735,$4026697180.4,1.8092423643,"Transaction & Payment Processing Service","US",---
-,"B121557","MA","Mastercard Inc. Class A",7783166,$3695135890.16,1.6602679801,"Transaction & Payment Processing Service","US",---
-,"2701271","COST","Costco Wholesale Corp.",4115181,$3061241994.09,1.3754520032,"Consumer Staples Merchandise Retail","US",---
-,"2007849","AMD","Advanced Micro Devices Inc.",15015591,$2890951735.23,1.2989385887,"Semiconductors","US",---
-,"2310525","CRM","Salesforce Inc.",8591632,$2653267794.24,1.1921444008,"Application Software","US",---
-,"2857817","NFLX","Netflix Inc.",3968143,$2392472777.56,1.0749661349,"Movies & Entertainment","US",---
-,"2008154","ADBE","Adobe Inc.",4231900,$2371048932,1.0653401493,"Application Software","US",---
-,"B4BNMY3","ACN","Accenture plc Class A",5833458,$2186263389.24,0.9823138334,"IT Consulting & Other Services","IE",---
-,"BNZHB81","LIN","Linde plc",4506777,$2022731653.14,0.9088371026,"Industrial Gases","IE",---
-,"2550707","MCD","McDonald's Corp.",6741818,$1970498565.04,0.8853681623,"Restaurants","US",---
-,"2434209","HD","Home Depot Inc.",4625188,$1760392804.68,0.790965175,"Home Improvement Retail","US",---
-,"2459020","INTU","Intuit Inc.",2474739,$1640479735.71,0.7370868239,"Application Software","US",---
-,"2046552","AMAT","Applied Materials Inc.",7775224,$1567640662.88,0.7043593725,"Semiconductor Materials & Equipment","US",---
-,"B80NXX8","NOW","ServiceNow Inc.",1905457,$1469755202.38,0.6603782847,"Systems Software","US",---
-,"BK6N347","UBER","Uber Technologies Inc.",18170844,$1444582098,0.6490677131,"Passenger Ground Transportation","US",---
-,"2885409","TXN","Texas Instruments Inc.",8441321,$1412486242.93,0.6346466682,"Semiconductors","US",---
-,"2871301","ISRG","Intuitive Surgical Inc.",3272507,$1261878699.2,0.5669769289,"Health Care Equipment","US",---
-,"BYV2325","SPGI","S&P Global Inc.",2944654,$1261430880.52,0.5667757187,"Financial Exchanges & Data","US",---
-,"2640147","NKE","NIKE Inc. Class B",11376806,$1182391447.58,0.5312623727,"Footwear","US",---
-,"2502247","LRCX","Lam Research Corp.",1224929,$1149289634.25,0.5163893389,"Semiconductor Materials & Equipment","US",---
-,"2108601","BA","Boeing Co.",5623100,$1145537932,0.514703655,"Aerospace & Defense","US",---
-,"BDRXDB4","BKNG","Booking Holdings Inc.",324287,$1124896474.21,0.5054292054,"Hotels, Resorts & Cruise Lines","US",---
-,"2853688","SYK","Stryker Corp.",3178012,$1109348648.84,0.4984433848,"Health Care Equipment","US",---
-,"2989301","TJX","TJX Cos. Inc.",10633602,$1054215302.28,0.4736713243,"Apparel Retail","US",---
-,"2886907","TMO","Thermo Fisher Scientific Inc.",1795641,$1023838585.38,0.4600227084,"Life Sciences Tools & Services","US",---
-,"2931034","VRTX","Vertex Pharmaceuticals Inc.",2395219,$1007764442.06,0.4528004069,"Biotechnology","US",---
-,"2842255","SBUX","Starbucks Corp.",10565475,$1002663577.5,0.4505085285,"Restaurants","US",---
-,"2065308","ADP","Automatic Data Processing Inc.",3823003,$960070743.39,0.4313710676,"Human Resource & Employment Services","US",---
-,"2270726","DIS","Walt Disney Co.",8506743,$949182383.94,0.4264787997,"Movies & Entertainment","US",---
-,"B87ZMX0","PANW","Palo Alto Networks Inc.",2930639,$910109941.45,0.4089230921,"Systems Software","US",---
-,"2113434","BSX","Boston Scientific Corp.",13617119,$901589448.99,0.4050947347,"Health Care Equipment","US",---
-,"2480138","KLAC","KLA Corp.",1263396,$862015090.8,0.3873135105,"Semiconductor Materials & Equipment","US",---
-,"B7FBFL2","AMT","American Tower Corp.",4333043,$861668930.98,0.3871579769,"Telecom Tower REITs","US",---
-,"BKF2SL7","BX","Blackstone Group LP Class A",6603843,$844103212.26,0.379265493,"Asset Management & Custody Banks","US",---
-,"2867719","SNPS","Synopsys Inc.",1413619,$811035628.87,0.3644078392,"Application Software","US",---
-,"B94Q9V0","TMUS","T-Mobile US Inc.",4836556,$789809594.8,0.3548707326,"Wireless Telecommunication Services","US",---
-,"BVLZX12","EQIX","Equinix Inc.",872672,$775648327.04,0.3485079086,"Data Center REITs","US",---
-,"2302232","CDNS","Cadence Design Systems Inc.",2529046,$769791021.48,0.3458761524,"Application Software","US",---
-,"B95WG16","ZTS","Zoetis Inc.",3840739,$761733765.87,0.3422559327,"Pharmaceuticals","US",---
-,"2804211","SHW","Sherwin-Williams Co.",2140952,$710860292.56,0.3193978833,"Specialty Chemicals","US",---
-,"B0X7DZ3","CMG","Chipotle Mexican Grill Inc. Class A",255064,$685808431.28,0.3081417877,"Restaurants","US",---
-,"BJJP138","CRWD","Crowdstrike Holdings Inc. Class A",2101365,$681157464.75,0.3060520537,"Systems Software","US",---
-,"BN33VM5","ANET","Arista Networks Inc.",2313300,$642033282,0.2884730986,"Communications Equipment","US",---
-,"2145084","APH","Amphenol Corp. Class A",5560646,$607444969.04,0.2729321632,"Electronic Components","US",---
-,"B65LWX6","ORLY","O'Reilly Automotive Inc.",549887,$597958121.54,0.2686696111,"Automotive Retail","US",---
-,"2210614","MAR","Marriott International Inc./MD Class A",2320334,$579781856.58,0.2605028016,"Hotels, Resorts & Cruise Lines","US",---
-,"B11FJK3","TDG","TransDigm Group Inc.",488459,$575277702.66,0.2584790323,"Aerospace & Defense","US",---
-,"BNKJSM5","MRVL","Marvell Technology Inc.",8020014,$574714203.24,0.2582258454,"Semiconductors","US",---
-,"B8K6ZD1","WDAY","Workday Inc. Class A",1924097,$566954422.02,0.2547392845,"Application Software","US",---
-,"BLP1HW5","AON","Aon plc Class A",1768000,$558670320,0.2510171401,"Insurance Brokers","IE",---
-,"2252058","MCO","Moody's Corp.",1445912,$548607931.04,0.2464959905,"Financial Exchanges & Data","US",---
-,"2749602","ROP","Roper Technologies Inc.",992935,$540881482.55,0.2430244064,"Application Software","US",---
-,"BMGYYH4","ABNB","Airbnb Inc. Class A",3434121,$540771033.87,0.2429747805,"Hotels, Resorts & Cruise Lines","US",---
-,"2304227","ECL","Ecolab Inc.",2385400,$536333336,0.2409808707,"Specialty Chemicals","US",---
-,"BN134B7","SNOW","Snowflake Inc. Class A",2758131,$519300904.68,0.2333279992,"Internet Services & Infrastructure","US",---
-,"2065159","ADSK","Autodesk Inc.",1987205,$513036714.85,0.2305134251,"Application Software","US",---
-,"2690830","PXD","Pioneer Natural Resources Co.",2168178,$509933783.82,0.2291192417,"Oil & Gas Exploration & Production","US",---
-,"2197137","CTAS","Cintas Corp.",804527,$505733717.47,0.2272321025,"Diversified Support Services","US",---
-,"B23FN39","LULU","Lululemon Athletica Inc.",1072381,$500898441.29,0.2250595561,"Apparel, Accessories & Luxury Goods","US",---
-,"2065955","AZO","AutoZone Inc.",163901,$492689684.02,0.221371265,"Automotive Retail","US",---
-,"BYVMW06","HLT","Hilton Worldwide Holdings Inc.",2383800,$487058016,0.2188408904,"Hotels, Resorts & Cruise Lines","US",---
-,"2567116","EW","Edwards Lifesciences Corp.",5636290,$478351932.3,0.2149291447,"Health Care Equipment","US",---
-,"BYVYHH4","WELL","Welltower Inc.",5168434,$476322877.44,0.2140174665,"Health Care REITs","US",---
-,"2746711","ROST","Ross Stores Inc.",3146976,$468773544.96,0.2106254627,"Apparel Retail","US",---
-,"BN78DQ4","PLTR","Palantir Technologies Inc. Class A",18270619,$458227124.52,0.205886832,"Application Software","US",---
-,"2459202","IDXX","IDEXX Laboratories Inc.",771905,$444022913.15,0.1995047129,"Health Care Equipment","US",---
-,"2208073","CPRT","Copart Inc.",8032947,$426951133.05,0.1918341615,"Diversified Support Services","US",---
-,"2592174","MCHP","Microchip Technology Inc.",5029735,$423201902.9,0.1901495883,"Semiconductors","US",---
-,"B5B2106","FTNT","Fortinet Inc.",6066364,$419246416.04,0.1883723416,"Systems Software","US",---
-,"2852533","PSA","Public Storage",1470747,$417500950.89,0.1875880836,"Self-Storage REITs","US",---
-,"2342034","FI","Fiserv Inc.",2789400,$416373738,0.1870816136,"Transaction & Payment Processing Service","US",---
-,"B0796X4","DXCM","Dexcom Inc.",3591791,$413307390.37,0.1857038676,"Health Care Equipment","US",---
-,"BN44JF6","APO","Apollo Global Management LLC",3692753,$412849785.4,0.1854982603,"Diversified Financial Services","US",---
-,"BYNZGK1","SQ","Block Inc.",5146322,$408978209.34,0.1837587157,"Transaction & Payment Processing Service","US",---
-,"2380863","GWW","WW Grainger Inc.",415279,$404257495.34,0.1816376434,"Trading Companies & Distributors","US",---
-,"2656423","ODFL","Old Dominion Freight Line Inc.",912768,$403881584.64,0.1814687423,"Cargo Ground Transportation","US",---
-,"BZ07BW4","MNST","Monster Beverage Corp.",6767375,$399951862.5,0.179703072,"Soft Drinks & Non-alcoholic Beverages","US",---
-,"BYVG1F6","WCN","Waste Connections Inc.",2394505,$398541412.2,0.1790693401,"Environmental & Facilities Services","CA",---
-,"B2972D2","MSCI","MSCI Inc. Class A",698414,$391789301.58,0.1760355374,"Financial Exchanges & Data","US",---
-,"2332262","FAST","Fastenal Co.",5310657,$387731067.57,0.1742121252,"Trading Companies & Distributors","US",---
-,"2023748","HES","Hess Corp.",2570053,$374585224.75,0.1683055435,"Oil & Gas Exploration & Production","US",---
-,"2520153","A","Agilent Technologies Inc.",2715483,$372998744.88,0.1675927195,"Life Sciences Tools & Services","US",---
-,"2674458","PAYX","Paychex Inc.",3022013,$370559234.06,0.1664966186,"Human Resource & Employment Services","US",---
-,"BN13P03","DASH","DoorDash Inc. Class A",2928591,$364814580.87,0.1639154784,"Restaurants","US",---
-,"2098876","YUM","Yum! Brands Inc.",2604705,$360543266.1,0.1619963265,"Restaurants","US",---
-,"BD8FDD1","TTD","Trade Desk Inc. Class A",4147091,$354285984.13,0.1591848561,"Advertising","US",---
-,"BKT9Y49","DDOG","Datadog Inc. Class A",2527247,$332231890.62,0.1492756928,"Application Software","US",---
-,"2209106","CL","Colgate-Palmolive Co.",3826168,$331040055.36,0.1487401872,"Household Products","US",---
-,"2262864","CSGP","CoStar Group Inc.",3795756,$330344644.68,0.148427731,"Real Estate Services","US",---
-,"2931205","VMC","Vulcan Materials Co.",1235213,$328381376.05,0.1475456113,"Construction Materials","US",---
-,"2654364","LNG","Cheniere Energy Inc.",2104267,$326582238.4,0.1467372376,"Oil & Gas Storage & Transportation","US",---
-,"2150204","PWR","Quanta Services Inc.",1350070,$326055405.7,0.1465005255,"Construction & Engineering","US",---
-,"B4P9W92","VRSK","Verisk Analytics Inc. Class A",1347440,$325945736,0.1464512496,"Research & Consulting Services","US",---
-,"2372763","IT","Gartner Inc.",688381,$320482658.36,0.1439966246,"IT Consulting & Other Services","US",---
-,"2779201","SLB","Schlumberger Ltd.",6614836,$319695023.88,0.1436427312,"Oil & Gas Equipment & Services","CW",---
-,"2319146","EFX","Equifax Inc.",1145376,$313363419.84,0.1407978671,"Research & Consulting Services","US",---
-,"2320524","EL","Estee Lauder Cos. Inc. Class A",2051490,$304810384.2,0.1369548877,"Personal Care Products","US",---
-,"B01Z7J1","MPWR","Monolithic Power Systems Inc.",423053,$304615082.12,0.1368671361,"Semiconductors","US",---
-,"2754060","ROK","Rockwell Automation Inc.",1065581,$303775831.48,0.136490051,"Electrical Components & Equipment","US",---
-,"B7Y8YR3","FANG","Diamondback Energy Inc.",1663455,$303613806.6,0.1364172513,"Oil & Gas Exploration & Production","US",---
-,"BQ1PC76","TEAM","Atlassian Corp. Class A",1440509,$298790376.78,0.1342500276,"Application Software","US",---
-,"BGSXTS3","MRNA","Moderna Inc.",3189567,$294205660.08,0.1321900605,"Biotechnology","US",---
-,"BMC9P69","COIN","Coinbase Global Inc. Class A",1428290,$290742712.4,0.1306341174,"Financial Exchanges & Data","US",---
-,"BF2FJ99","MDB","MongoDB Inc. Class A",630073,$282008073.34,0.1267095414,"Internet Services & Infrastructure","US",---
-,"2330299","FICO","Fair Isaac Corp.",218155,$277037216.05,0.1244760768,"Application Software","US",---
-,"BFH3N85","VEEV","Veeva Systems Inc. Class A",1222777,$275748441.27,0.1238970152,"Health Care Technology","US",---
-,"BR4T3B3","HUBS","HubSpot Inc.",444300,$274937283,0.1235325522,"Application Software","US",---
-,"2045623","ANSS","ANSYS Inc.",807258,$269761405.86,0.1212069698,"Application Software","US",---
-,"2422806","HSY","Hershey Co.",1392791,$261733284.72,0.1175998406,"Packaged Foods & Meats","US",---
-,"BJXC5M2","NET","Cloudflare Inc. Class A",2612184,$257404611.36,0.1156549168,"Internet Services & Infrastructure","US",---
-,"2900335","TSCO","Tractor Supply Co.",1005268,$255659757.76,0.1148709336,"Other Specialty Retail","US",---
-,"B5BKPQ4","MSI","Motorola Solutions Inc.",771561,$254916038.79,0.1145367719,"Communications Equipment","US",---
-,"2126249","MTD","Mettler-Toledo International Inc.",201529,$251350999.38,0.1129349578,"Life Sciences Tools & Services","US",---
-,"B28TS42","ULTA","Ulta Beauty Inc.",457546,$250991433.76,0.1127734008,"Other Specialty Retail","US",---
-,"2950482","WST","West Pharmaceutical Services Inc.",687594,$246406185.84,0.110713195,"Life Sciences Tools & Services","US",---
-,"B424494","SPLK","Splunk Inc.",1566936,$244786741.92,0.1099855598,"Application Software","US",---
-,"2732903","RMD","ResMed Inc.",1367616,$237582251.52,0.1067484976,"Health Care Equipment","US",---
-,"2122117","TTWO","Take-Two Interactive Software Inc.",1580487,$232220954.91,0.104339604,"Interactive Home Entertainment","US",---
-,"2195841","CHD","Church & Dwight Co. Inc.",2290347,$229309541.64,0.1030314718,"Household Products","US",---
-,"B1VP7R6","BR","Broadridge Financial Solutions Inc.",1093587,$222632441.46,0.1000313722,"Data Processing & Outsourced Services","US",---
-,"BZ6TS23","SBAC","SBA Communications Corp. Class A",1002454,$209743450.42,0.0942401971,"Telecom Tower REITs","US",---
-,"BDR73G1","IQV","IQVIA Holdings Inc.",847805,$209543483.8,0.0941503497,"Life Sciences Tools & Services","US",---
-,"B783TY6","APTV","Aptiv plc",2629780,$209041212.2,0.0939246732,"Automotive Parts & Equipment","JE",---
-,"2613990","ILMN","Illumina Inc.",1476493,$206458016.19,0.0927640129,"Life Sciences Tools & Services","US",---
-,"BF14BT1","ARES","Ares Management Corp. Class A",1552119,$205857542.97,0.0924942132,"Asset Management & Custody Banks","US",---
-,"2679204","ALGN","Align Technology Inc.",676235,$204506988.7,0.0918873933,"Health Care Supplies","US",---
-,"2724193","O","Realty Income Corp.",3866154,$201465284.94,0.0905207201,"Retail REITs","US",---
-,"BJ2Z0H2","PINS","Pinterest Inc. Class A",5447406,$199919800.2,0.0898263156,"Interactive Media & Services","US",---
-,"BZ00V34","ZS","Zscaler Inc.",820493,$198534691.21,0.0892039699,"Systems Software","US",---
-,"B02T2J7","LVS","Las Vegas Sands Corp.",3553688,$193747069.76,0.0870528353,"Casinos & Gaming","US",---
-,"B75JX34","LPLA","LPL Financial Holdings Inc.",702591,$188217102.99,0.0845681562,"Investment Banking & Brokerage","US",---
-,"2503477","TDY","Teledyne Technologies Inc.",438580,$187392076.6,0.0841974622,"Electronic Equipment & Instruments","US",---
-,"2937689","WAT","Waters Corp.",549813,$185517902.46,0.0833553737,"Life Sciences Tools & Services","US",---
-,"BMWBC20","RBLX","ROBLOX Corp.",4531700,$180814830,0.081242228,"Interactive Home Entertainment","US",---
-,"B00FWN1","ALNY","Alnylam Pharmaceuticals Inc.",1165916,$176158248.44,0.0791499712,"Biotechnology","US",---
-,"2146838","BF.B","Brown-Forman Corp. Class B",2877260,$173297369.8,0.0778645448,"Distillers & Vintners","US",---
-,"BQPDXR3","COO","Cooper Cos. Inc.",1840448,$172265932.8,0.077401108,"Health Care Supplies","US",---
-,"2162340","CTRA","Coterra Energy Inc.",6642230,$171236689.4,0.0769386568,"Oil & Gas Exploration & Production","US",---
-,"2909644","TYL","Tyler Technologies Inc.",391377,$171086541.78,0.0768711938,"Application Software","US",---
-,"B748CK2","EXPE","Expedia Group Inc.",1239620,$169604808.4,0.0762054335,"Hotels, Resorts & Cruise Lines","US",---
-,"2572079","MLM","Martin Marietta Materials Inc.",287367,$166014789.57,0.0745923959,"Construction Materials","US",---
-,"2329770","FDS","FactSet Research Systems Inc.",353089,$163331909.62,0.0733869464,"Financial Exchanges & Data","US",---
-,"B44Z3T8","EPAM","EPAM Systems Inc.",536376,$163272854.4,0.0733604122,"IT Consulting & Other Services","US",---
-,"2445416","JBHT","JB Hunt Transport Services Inc.",766885,$158216044.35,0.071088328,"Cargo Ground Transportation","US",---
-,"2583576","ON","ON Semiconductor Corp.",2001811,$157982924.12,0.0709835844,"Semiconductors","US",---
-,"2142922","VRSN","VeriSign Inc.",806736,$157547473.44,0.0707879312,"Internet Services & Infrastructure","US",---
-,"BDFZSP1","OKTA","Okta Inc.",1457311,$156369470.3,0.0702586406,"Internet Services & Infrastructure","US",---
-,"2860257","SUI","Sun Communities Inc.",1156980,$154757644.8,0.0695344284,"Single-Family Residential REITs","US",---
-,"B65SQW4","ENPH","Enphase Energy Inc.",1205005,$153047685.05,0.0687661234,"Semiconductor Materials & Equipment","US",---
-,"BGSP7M9","ZM","Zoom Video Communications Inc. Class A",2157507,$152600470.11,0.0685651845,"Application Software","US",---
-,"2437071","BMRN","BioMarin Pharmaceutical Inc.",1750622,$151043666.16,0.0678656942,"Biotechnology","US",---
-,"2046853","ALB","Albemarle Corp.",1090318,$150300336.3,0.0675317074,"Specialty Chemicals","US",---
-,"BWFRFC6","GDDY","GoDaddy Inc. Class A",1308109,$149320642.35,0.0670915194,"Internet Services & Infrastructure","US",---
-,"2884183","TER","Teradyne Inc.",1421616,$147265201.44,0.0661679856,"Semiconductor Materials & Equipment","US",---
-,"B01SD70","DPZ","Domino's Pizza Inc.",324387,$145438911.45,0.065347412,"Restaurants","US",---
-,"B0T7YX2","LYV","Live Nation Entertainment Inc.",1497902,$145266535.96,0.0652699617,"Movies & Entertainment","US",---
-,"B1HMF22","FSLR","First Solar Inc.",943782,$145238611.98,0.0652574151,"Semiconductors","US",---
-,"BDHLTQ5","BKR","Baker Hughes Co. Class A",4679428,$138464274.52,0.0622136257,"Oil & Gas Equipment & Services","US",---
-,"2405302","HAL","Halliburton Co.",3743168,$131272901.76,0.0589824574,"Oil & Gas Equipment & Services","US",---
-,"BZ6VT82","CHTR","Charter Communications Inc. Class A",446535,$131250032.55,0.058972182,"Cable & Satellite","US",---
-,"2754907","RCL","Royal Caribbean Cruises Ltd.",1012419,$124881883.65,0.0561108979,"Hotels, Resorts & Cruise Lines","LR",---
-,"BF311Y5","BURL","Burlington Stores Inc.",600041,$123068409.1,0.0552960824,"Apparel Retail","US",---
-,"2747305","ROL","Rollins Inc.",2700533,$119012489.31,0.05347371,"Environmental & Facilities Services","US",---
-,"BJXMVK2","TW","Tradeweb Markets Inc. Class A",1065810,$112784014.2,0.050675183,"Financial Exchanges & Data","US",---
-,"BMC1PR6","BSY","Bentley Systems Inc. Class B",2112602,$108524364.74,0.0487612724,"Application Software","US",---
-,"2237561","HEI.A","HEICO Corp. Class A",696777,$108411533.43,0.048710576,"Aerospace & Defense","US",---
-,"BFY8C75","STE","STERIS plc",459062,$106920130.42,0.0480404711,"Health Care Equipment","IE",---
-,"BD8DJ71","SNAP","Snap Inc.",9696425,$106854603.5,0.048011029,"Interactive Media & Services","US",---
-,"B1XGNW4","PODD","Insulet Corp.",648894,$106418616,0.0478151347,"Health Care Equipment","US",---
-,"2471950","INCY","Incyte Corp.",1769305,$103256639.8,0.0463944217,"Biotechnology","US",---
-,"BD81GW9","INVH","Invitation Homes Inc.",2846799,$96990441.93,0.0435789453,"Single-Family Residential REITs","US",---
-,"BD6P5Q0","TWLO","Twilio Inc. Class A",1599906,$95338398.54,0.0428366628,"Internet Services & Infrastructure","US",---
-,"BPGMZQ5","VLTO","Veralto Corp.",1087871,$94013811.82,0.0422415104,"Environmental & Facilities Services","US",---
-,"2692687","BRO","Brown & Brown Inc.",1058990,$89177547.9,0.0400685202,"Insurance Brokers","US",---
-,"BL95MY0","PAYC","Paycom Software Inc.",475866,$86793199.74,0.0389972046,"Human Resource & Employment Services","US",---
-,"BKVD2N4","STX","Seagate Technology Holdings plc",924500,$86024725,0.0386519198,"Technology Hardware, Storage & Periphera","IE",---
-,"2419217","HEI","HEICO Corp.",382514,$73978207.6,0.033239278,"Aerospace & Defense","US",---
-,"BLFDXH8","U","Unity Software Inc.",2470826,$72444618.32,0.0325502183,"Application Software","US",---
-,"2319414","EQT","EQT Corp.",1910226,$70964895.9,0.0318853616,"Oil & Gas Exploration & Production","US",---
-,"BDQZFJ3","LW","Lamb Weston Holdings Inc.",673171,$68804807.91,0.0309148087,"Packaged Foods & Meats","US",---
-,"BRTLC06","LBRDK","Liberty Broadband Corp.",1108533,$66711515.94,0.029974268,"Cable & Satellite","US",---
-,"2469193","JKHY","Jack Henry & Associates Inc.",338712,$58857984.24,0.026445584,"Transaction & Payment Processing Service","US",---
-,"B1WT4X2","IBKR","Interactive Brokers Group Inc.",471601,$51272460.72,0.0230373191,"Investment Banking & Brokerage","US",---
-,"BFYT7B7","DOCU","DocuSign Inc.",945042,$50342387.34,0.0226194262,"Application Software","US",---
-,"BK80XH9","MTCH","Match Group Inc.",1264479,$45571823.16,0.0204759556,"Interactive Media & Services","US",---
-,"BM99VY2","TPL","Texas Pacific Land Corp.",28586,$45034956.12,0.020234735,"Oil & Gas Exploration & Production","US",---
-,"BLGJ610","WMG","Warner Music Group Corp. Class A",1155163,$40349843.59,0.0181296589,"Movies & Entertainment","US",---
-,"BZ1LFG7","ROKU","Roku Inc.",579907,$36638524.26,0.0164621195,"Movies & Entertainment","US",---
-,"2781585","POOL","Pool Corp.",85541,$34055582.92,0.0153015736,"Distributors","US",---
-,"BKDS4H5","BILL","BILL Holdings Inc.",472762,$29940017.46,0.0134524016,"Application Software","US",---
-,"2146816","BF.A","Brown-Forman Corp. Class A",477742,$28635855.48,0.0128664263,"Distillers & Vintners","US",---
-,"2166320","CPT","Camden Property Trust",247135,$23349314.8,0.0104911215,"Multi-Family Residential REITs","US",---
-,"BYXJF62","Z","Zillow Group Inc. Class C",359370,$20178625.5,0.0090664935,"Real Estate Services","US",---
-,"BRTLBY3","LBRDA","Liberty Broadband Corp. Class A",155432,$9349234.8,0.004200721,"Cable & Satellite","US",---
-,"BPG82M8","SYM","Symbotic Inc. Class A",232120,$9145528,0.0041091932,"Industrial Machinery & Supplies & Compon","US",---
-,"BJLFHW7","CHWY","Chewy Inc. Class A",472017,$8326379.88,0.0037411403,"Other Specialty Retail","US",---
-,"BP0TR77","LCID","Lucid Group Inc.",2108797,$6959030.1,0.003126774,"Automobile Manufacturers","US",---
-,"BVYJBR3","ZG","Zillow Group Inc. Class A",91340,$4937840.4,0.0022186297,"Real Estate Services","US",---
+,"2588173","MSFT","Microsoft Corp",69842147,$29383988085.84,12.95705,"Software","US","Common Stock"
+,"2046251","AAPL","Apple Inc",137795038,$23629093116.24,10.41939,"Technology Hardware, Storage & Peripherals","US","Common Stock"
+,"2379504","NVDA","NVIDIA Corp",22272866,$20124870802.96,8.87418,"Semiconductors & Semiconductor Equipment","US","Common Stock"
+,"2000019","AMZN","Amazon.com Inc",87577944,$15797309538.72,6.96592,"Broadline Retail","US","Common Stock"
+,"B7TL820","META","Meta Platforms Inc",20766445,$10083770363.1,4.4465,"Interactive Media & Services","US","Common Stock"
+,"BYVY8G0","GOOGL","Alphabet Inc",55141564,$8322516254.52,3.66986,"Interactive Media & Services","US","Common Stock"
+,"BYY88Y7","GOOG","Alphabet Inc",45125536,$6870814111.36,3.02973,"Interactive Media & Services","US","Common Stock"
+,"2516152","LLY","Eli Lilly & Co",8073323,$6280722361.08,2.76952,"Pharmaceuticals","US","Common Stock"
+,"B616C79","TSLA","Tesla Inc",25559924,$4493179039.96,1.98129,"Automobiles","US","Common Stock"
+,"B2PZN04","V","Visa Inc",14490129,$4043905201.32,1.78318,"Financial Services","US","Common Stock"
+,"B121557","MA","Mastercard Inc",7868193,$3789085703.01,1.67082,"Financial Services","US","Common Stock"
+,"2701271","COST","Costco Wholesale Corp",4191201,$3070599588.63,1.354,"Consumer Staples Distribution & Retail","US","Common Stock"
+,"2007849","AMD","Advanced Micro Devices Inc",15262019,$2754641809.31,1.21468,"Semiconductors & Semiconductor Equipment","US","Common Stock"
+,"2310525","CRM","Salesforce Inc",8687331,$2616450350.58,1.15374,"Software","US","Common Stock"
+,"2857817","NFLX","Netflix Inc",3988547,$2422364249.51,1.06816,"Entertainment","US","Common Stock"
+,"2008154","ADBE","Adobe Inc",4269617,$2154448738.2,0.95002,"Software","US","Common Stock"
+,"BNZHB81","LIN","Linde PLC",4582235,$2127623355.2,0.93819,"Chemicals","US","Common Stock"
+,"B4BNMY3","ACN","Accenture PLC",5924585,$2053520406.85,0.90551,"IT Services","US","Common Stock"
+,"2550707","MCD","McDonald's Corp",6822251,$1923533669.45,0.84819,"Hotels, Restaurants & Leisure","US","Common Stock"
+,"2459020","INTU","Intuit Inc",2514133,$1634186450,0.7206,"Software","US","Common Stock"
+,"2046552","AMAT","Applied Materials Inc",7865875,$1622179401.25,0.71531,"Semiconductors & Semiconductor Equipment","US","Common Stock"
+,"2885409","TXN","Texas Instruments Inc",8597957,$1497850088.97,0.66049,"Semiconductors & Semiconductor Equipment","US","Common Stock"
+,"B80NXX8","NOW","ServiceNow Inc",1938425,$1477855220,0.65167,"Software","US","Common Stock"
+,"BK6N347","UBER","Uber Technologies Inc",18651955,$1436014015.45,0.63322,"Ground Transportation","US","Common Stock"
+,"2871301","ISRG","Intuitive Surgical Inc",3332369,$1329915144.21,0.58643,"Health Care Equipment & Supplies","US","Common Stock"
+,"BYV2325","SPGI","S&P Global Inc",2970972,$1264000037.4,0.55737,"Capital Markets","US","Common Stock"
+,"2502247","LRCX","Lam Research Corp",1240177,$1204918767.89,0.53132,"Semiconductors & Semiconductor Equipment","US","Common Stock"
+,"BDRXDB4","BKNG","Booking Holdings Inc",323229,$1172636024.52,0.51708,"Hotels, Restaurants & Leisure","US","Common Stock"
+,"2853688","SYK","Stryker Corp",3238112,$1158823141.44,0.51099,"Health Care Equipment & Supplies","US","Common Stock"
+,"2108601","BA","Boeing Co/The",5772588,$1114051758.12,0.49125,"Aerospace & Defense","US","Common Stock"
+,"2989301","TJX","TJX Cos Inc/The",10784657,$1093779912.94,0.48231,"Specialty Retail","US","Common Stock"
+,"2640147","NKE","NIKE Inc",11515812,$1082256011.76,0.47723,"Textiles, Apparel & Luxury Goods","US","Common Stock"
+,"2270726","DIS","Walt Disney Co/The",8681748,$1062298685.28,0.46843,"Entertainment","US","Common Stock"
+,"2886907","TMO","Thermo Fisher Scientific Inc",1804503,$1048795188.63,0.46247,"Life Sciences Tools & Services","US","Common Stock"
+,"2931034","VRTX","Vertex Pharmaceuticals Inc",2444526,$1021836313.26,0.45058,"Biotechnology","US","Common Stock"
+,"2842255","SBUX","Starbucks Corp",10716965,$979423431.35,0.43188,"Hotels, Restaurants & Leisure","US","Common Stock"
+,"2065308","ADP","Automatic Data Processing Inc",3888575,$971132720.5,0.42823,"Professional Services","US","Common Stock"
+,"2113434","BSX","Boston Scientific Corp",13889385,$951283978.65,0.41947,"Health Care Equipment & Supplies","US","Common Stock"
+,"BKF2SL7","BX","Blackstone Inc",6811790,$894864852.3,0.3946,"Capital Markets","US","Common Stock"
+,"2480138","KLAC","KLA Corp",1280299,$894378472.43,0.39438,"Semiconductors & Semiconductor Equipment","US","Common Stock"
+,"B7FBFL2","AMT","American Tower Corp",4413880,$872138549.2,0.38457,"Specialized REITs","US","REIT"
+,"B87ZMX0","PANW","Palo Alto Networks Inc",3058901,$869125541.13,0.38325,"Software","US","Common Stock"
+,"BL59CR9","GE","General Electric Co",4897159,$859598319.27,0.37905,"Aerospace & Defense","US","Common Stock"
+,"B94Q9V0","TMUS","T-Mobile US Inc",5058225,$825603484.5,0.36405,"Wireless Telecommunication Services","US","Common Stock"
+,"2867719","SNPS","Synopsys Inc",1444601,$825589471.5,0.36405,"Software","US","Common Stock"
+,"2302232","CDNS","Cadence Design Systems Inc",2578658,$802684662.24,0.35395,"Software","US","Common Stock"
+,"B0X7DZ3","CMG","Chipotle Mexican Grill Inc",259907,$755489870.39,0.33314,"Hotels, Restaurants & Leisure","US","Common Stock"
+,"2804211","SHW","Sherwin-Williams Co/The",2170048,$753722771.84,0.33236,"Chemicals","US","Common Stock"
+,"BVLZX12","EQIX","Equinix Inc",896246,$739698711.18,0.32617,"Specialized REITs","US","REIT"
+,"BJJP138","CRWD","Crowdstrike Holdings Inc",2157813,$691773269.67,0.30504,"Software","US","Common Stock"
+,"BN33VM5","ANET","Arista Networks Inc",2370743,$687468055.14,0.30314,"Communications Equipment","US","Common Stock"
+,"B95WG16","ZTS","Zoetis Inc",3904629,$660702273.09,0.29134,"Pharmaceuticals","US","Common Stock"
+,"2145084","APH","Amphenol Corp",5686584,$655947464.4,0.28924,"Electronic Equipment, Instruments & Components","US","Common Stock"
+,"B65LWX6","ORLY","O'Reilly Automotive Inc",560189,$632386158.32,0.27885,"Specialty Retail","US","Common Stock"
+,"B11FJK3","TDG","TransDigm Group Inc",501050,$617093180,0.27211,"Aerospace & Defense","US","Common Stock"
+,"BLP1HW5","AON","Aon PLC",1786979,$596350631.88,0.26296,"Insurance","US","Common Stock"
+,"BMGYYH4","ABNB","Airbnb Inc",3533086,$582817866.56,0.257,"Hotels, Restaurants & Leisure","US","Common Stock"
+,"2690830","PXD","Pioneer Natural Resources Co",2217083,$581984287.5,0.25663,"Oil, Gas & Consumable Fuels","US","Common Stock"
+,"BNKJSM5","MRVL","Marvell Technology Inc",8197875,$581065380,0.25622,"Semiconductors & Semiconductor Equipment","US","Common Stock"
+,"2252058","MCO","Moody's Corp",1471738,$578437186.14,0.25507,"Capital Markets","US","Common Stock"
+,"2749602","ROP","Roper Technologies Inc",1015620,$569600320.8,0.25117,"Software","US","Common Stock"
+,"2304227","ECL","Ecolab Inc",2435300,$562310770,0.24795,"Chemicals","US","Common Stock"
+,"2197137","CTAS","Cintas Corp",817955,$561959623.65,0.2478,"Commercial Services & Supplies","US","Common Stock"
+,"2210614","MAR","Marriott International Inc/MD",2197820,$554531964.2,0.24452,"Hotels, Restaurants & Leisure","US","Common Stock"
+,"2567116","EW","Edwards Lifesciences Corp",5708280,$545483236.8,0.24053,"Health Care Equipment & Supplies","US","Common Stock"
+,"B8K6ZD1","WDAY","Workday Inc",1982884,$540831611,0.23848,"Software","US","Common Stock"
+,"2065159","ADSK","Autodesk Inc",2030211,$528707548.62,0.23314,"Software","US","Common Stock"
+,"2065955","AZO","AutoZone Inc",164162,$517381167.3,0.22814,"Specialty Retail","US","Common Stock"
+,"BYVMW06","HLT","Hilton Worldwide Holdings Inc",2394732,$510820282.92,0.22525,"Hotels, Restaurants & Leisure","US","Common Stock"
+,"B0796X4","DXCM","Dexcom Inc",3663353,$508107061.1,0.22405,"Health Care Equipment & Supplies","US","Common Stock"
+,"BYVYHH4","WELL","Welltower Inc",5401391,$504705975.04,0.22255,"Health Care REITs","US","REIT"
+,"2208073","CPRT","Copart Inc",8209608,$475500495.36,0.20967,"Commercial Services & Supplies","US","Common Stock"
+,"B1VQR35","SMCI","Super Micro Computer Inc",468205,$472901096.15,0.20853,"Technology Hardware, Storage & Peripherals","US","Common Stock"
+,"2746711","ROST","Ross Stores Inc",3196974,$469187904.24,0.20689,"Specialty Retail","US","Common Stock"
+,"BMC9P69","COIN","Coinbase Global Inc",1767823,$468685233.76,0.20667,"Capital Markets","US","Common Stock"
+,"BN134B7","SNOW","Snowflake Inc",2812245,$454458792,0.2004,"IT Services","US","Common Stock"
+,"2342034","FI","Fiserv Inc",2805442,$448365740.44,0.19771,"Financial Services","US","Common Stock"
+,"BYNZGK1","SQ","Block Inc",5278080,$446420006.4,0.19685,"Financial Services","US","Common Stock"
+,"BN78DQ4","PLTR","Palantir Technologies Inc",19040086,$438112378.86,0.19319,"Software","US","Common Stock"
+,"2380863","GWW","WW Grainger Inc",420715,$427993369.5,0.18873,"Trading Companies & Distributors","US","Common Stock"
+,"B23FN39","LULU","Lululemon Athletica Inc",1092109,$426632380.85,0.18813,"Textiles, Apparel & Luxury Goods","US","Common Stock"
+,"2459202","IDXX","IDEXX Laboratories Inc",789428,$426235860.04,0.18795,"Health Care Equipment & Supplies","US","Common Stock"
+,"BN44JF6","APO","Apollo Global Management Inc",3776996,$424723200.2,0.18728,"Financial Services","US","Common Stock"
+,"B5B2106","FTNT","Fortinet Inc",6200960,$423587577.6,0.18678,"Software","US","Common Stock"
+,"BYVG1F6","WCN","Waste Connections Inc",2449249,$421295320.49,0.18577,"Commercial Services & Supplies","US","Common Stock"
+,"2332262","FAST","Fastenal Co",5443028,$419875179.92,0.18515,"Trading Companies & Distributors","US","Common Stock"
+,"BZ07BW4","MNST","Monster Beverage Corp",6922950,$410392476,0.18097,"Beverages","US","Common Stock"
+,"2656423","ODFL","Old Dominion Freight Line Inc",1867209,$409497605.79,0.18057,"Ground Transportation","US","Common Stock"
+,"2520153","A","Agilent Technologies Inc",2786327,$405438441.77,0.17878,"Life Sciences Tools & Services","US","Common Stock"
+,"2023748","HES","Hess Corp",2628629,$401233930.56,0.17693,"Oil, Gas & Consumable Fuels","US","Common Stock"
+,"B2972D2","MSCI","MSCI Inc",714437,$400406216.65,0.17656,"Capital Markets","US","Common Stock"
+,"2674458","PAYX","Paychex Inc",3080021,$378226578.8,0.16678,"Professional Services","US","Common Stock"
+,"2262864","CSGP","CoStar Group Inc",3889165,$375693339,0.16566,"Real Estate Management & Development","US","Common Stock"
+,"2779201","SLB","Schlumberger NV",6822278,$373929057.18,0.16489,"Energy Equipment & Services","US","Common Stock"
+,"2098876","YUM","Yum! Brands Inc",2677139,$371185322.35,0.16368,"Hotels, Restaurants & Leisure","US","Common Stock"
+,"BN13P03","DASH","DoorDash Inc",2689645,$370417909.4,0.16334,"Hotels, Restaurants & Leisure","US","Common Stock"
+,"BD8FDD1","TTD","Trade Desk Inc/The",4236398,$370345913.16,0.16331,"Media","US","Common Stock"
+,"2150204","PWR","Quanta Services Inc",1387629,$360506014.2,0.15897,"Construction & Engineering","US","Common Stock"
+,"2209106","CL","Colgate-Palmolive Co",3918185,$352832559.25,0.15558,"Household Products","US","Common Stock"
+,"BGSXTS3","MRNA","Moderna Inc",3269226,$348368722.56,0.15362,"Biotechnology","US","Common Stock"
+,"2931205","VMC","Vulcan Materials Co",1258691,$343521947.72,0.15148,"Construction Materials","US","Common Stock"
+,"2654364","LNG","Cheniere Energy Inc",2123739,$342516625.92,0.15103,"Oil, Gas & Consumable Fuels","US","Common Stock"
+,"B7Y8YR3","FANG","Diamondback Energy Inc",1700084,$336905646.28,0.14856,"Oil, Gas & Consumable Fuels","US","Common Stock"
+,"2372763","IT","Gartner Inc",705544,$336311658.48,0.1483,"IT Services","US","Common Stock"
+,"2320524","EL","Estee Lauder Cos Inc/The",2108933,$325092021.95,0.14335,"Personal Care Products","US","Common Stock"
+,"B4P9W92","VRSK","Verisk Analytics Inc",1365679,$321931510.67,0.14196,"Professional Services","US","Common Stock"
+,"BKT9Y49","DDOG","Datadog Inc",2588943,$319993354.8,0.1411,"Software","US","Common Stock"
+,"BFH3N85","VEEV","Veeva Systems Inc",1380796,$319916625.24,0.14107,"Health Care Technology","US","Common Stock"
+,"2754060","ROK","Rockwell Automation Inc",1092086,$318157414.38,0.14029,"Electrical Equipment","US","Common Stock"
+,"2319146","EFX","Equifax Inc",1181172,$315987133.44,0.13934,"Professional Services","US","Common Stock"
+,"B01Z7J1","MPWR","Monolithic Power Systems Inc",434489,$294331538.38,0.12979,"Semiconductors & Semiconductor Equipment","US","Common Stock"
+,"BQ1PC76","TEAM","Atlassian Corp",1499025,$292474767.75,0.12897,"Software","US","Common Stock"
+,"2045623","ANSS","ANSYS Inc",829794,$288071285.04,0.12703,"Software","US","Common Stock"
+,"BR4T3B3","HUBS","HubSpot Inc",458936,$287550940.16,0.1268,"Software","US","Common Stock"
+,"B5BKPQ4","MSI","Motorola Solutions Inc",792946,$281479971.08,0.12412,"Communications Equipment","US","Common Stock"
+,"2330299","FICO","Fair Isaac Corp",225178,$281384680.58,0.12408,"Software","US","Common Stock"
+,"2732903","RMD","ResMed Inc",1404914,$278215119.42,0.12268,"Health Care Equipment & Supplies","US","Common Stock"
+,"2422806","HSY","Hershey Co/The",1425091,$277180199.5,0.12222,"Food Products","US","Common Stock"
+,"2950482","WST","West Pharmaceutical Services Inc",699964,$276982754.44,0.12214,"Life Sciences Tools & Services","US","Common Stock"
+,"2126249","MTD","Mettler-Toledo International Inc",205126,$273082192.54,0.12042,"Life Sciences Tools & Services","US","Common Stock"
+,"2900335","TSCO","Tractor Supply Co",1032201,$270147645.72,0.11912,"Specialty Retail","US","Common Stock"
+,"BJXC5M2","NET","Cloudflare Inc",2704260,$261853495.8,0.11547,"IT Services","US","Common Stock"
+,"2195841","CHD","Church & Dwight Co Inc",2331465,$243195114.15,0.10724,"Household Products","US","Common Stock"
+,"B28TS42","ULTA","Ulta Beauty Inc",463817,$242520632.96,0.10694,"Specialty Retail","US","Common Stock"
+,"2122117","TTWO","Take-Two Interactive Software Inc",1629564,$241973958.36,0.1067,"Entertainment","US","Common Stock"
+,"BF2FJ99","MDB","MongoDB Inc",653806,$234480983.84,0.1034,"IT Services","US","Common Stock"
+,"2592174","MCHP","Microchip Technology Inc",2585089,$231908334.19,0.10226,"Semiconductors & Semiconductor Equipment","US","Common Stock"
+,"B1VP7R6","BR","Broadridge Financial Solutions Inc",1125951,$230662321.86,0.10171,"Professional Services","US","Common Stock"
+,"2679204","ALGN","Align Technology Inc",696423,$228371030.16,0.1007,"Health Care Equipment & Supplies","US","Common Stock"
+,"BZ6TS23","SBAC","SBA Communications Corp",1032924,$223834630.8,0.0987,"Specialized REITs","US","REIT"
+,"2724193","O","Realty Income Corp",4118473,$222809389.3,0.09825,"Retail REITs","US","REIT"
+,"2852533","PSA","Public Storage",757485,$219716099.1,0.09689,"Specialized REITs","US","REIT"
+,"BDR73G1","IQV","IQVIA Holdings Inc",868050,$219521164.5,0.0968,"Life Sciences Tools & Services","US","Common Stock"
+,"B783TY6","APTV","Aptiv PLC",2670240,$212684616,0.09378,"Automobile Components","US","Common Stock"
+,"BF14BT1","ARES","Ares Management Corp",1598360,$212549912.8,0.09373,"Capital Markets","US","Common Stock"
+,"2613990","ILMN","Illumina Inc",1520577,$208805633.64,0.09207,"Life Sciences Tools & Services","US","Common Stock"
+,"BMWBC20","RBLX","ROBLOX Corp",5284934,$201778780.12,0.08898,"Entertainment","US","Common Stock"
+,"BJ2Z0H2","PINS","Pinterest Inc",5698709,$197574241.03,0.08712,"Interactive Media & Services","US","Common Stock"
+,"2937689","WAT","Waters Corp",566486,$195001475.78,0.08599,"Life Sciences Tools & Services","US","Common Stock"
+,"BQPDXR3","COO","Cooper Cos Inc/The",1904431,$193223569.26,0.0852,"Health Care Equipment & Supplies","US","Common Stock"
+,"B75JX34","LPLA","LPL Financial Holdings Inc",713811,$188588866.2,0.08316,"Capital Markets","US","Common Stock"
+,"B02T2J7","LVS","Las Vegas Sands Corp",3613635,$186824929.5,0.08238,"Hotels, Restaurants & Leisure","US","Common Stock"
+,"2572079","MLM","Martin Marietta Materials Inc",296626,$182110566.44,0.0803,"Construction Materials","US","Common Stock"
+,"B00FWN1","ALNY","Alnylam Pharmaceuticals Inc",1207940,$180526633,0.0796,"Biotechnology","US","Common Stock"
+,"B748CK2","EXPE","Expedia Group Inc",1256371,$173065105.25,0.07631,"Hotels, Restaurants & Leisure","US","Common Stock"
+,"2909644","TYL","Tyler Technologies Inc",405731,$172439732.31,0.07604,"Software","US","Common Stock"
+,"B01SD70","DPZ","Domino's Pizza Inc",335843,$166873669.84,0.07358,"Hotels, Restaurants & Leisure","US","Common Stock"
+,"2329770","FDS","FactSet Research Systems Inc",365855,$166240853.45,0.0733,"Capital Markets","US","Common Stock"
+,"2884183","TER","Teradyne Inc",1472849,$166181552.67,0.07328,"Semiconductors & Semiconductor Equipment","US","Common Stock"
+,"B1HMF22","FSLR","First Solar Inc",976830,$164888904,0.07271,"Semiconductors & Semiconductor Equipment","US","Common Stock"
+,"B0T7YX2","LYV","Live Nation Entertainment Inc",1555247,$164498475.19,0.07254,"Entertainment","US","Common Stock"
+,"BZ00V34","ZS","Zscaler Inc",853473,$164404503.99,0.0725,"Software","US","Common Stock"
+,"BDHLTQ5","BKR","Baker Hughes Co",4822401,$161550433.5,0.07124,"Energy Equipment & Services","US","Common Stock"
+,"BDFZSP1","OKTA","Okta Inc",1518845,$158901563.9,0.07007,"IT Services","US","Common Stock"
+,"2437071","BMRN","BioMarin Pharmaceutical Inc",1812090,$158267940.6,0.06979,"Biotechnology","US","Common Stock"
+,"2445416","JBHT","JB Hunt Transport Services Inc",793326,$158070205.5,0.0697,"Ground Transportation","US","Common Stock"
+,"2142922","VRSN","VeriSign Inc",824650,$156279421.5,0.06891,"IT Services","US","Common Stock"
+,"2860257","SUI","Sun Communities Inc",1196838,$153889430.04,0.06786,"Residential REITs","US","REIT"
+,"B44Z3T8","EPAM","EPAM Systems Inc",555397,$153378435.52,0.06763,"IT Services","US","Common Stock"
+,"2405302","HAL","Halliburton Co",3864036,$152320299.12,0.06717,"Energy Equipment & Services","US","Common Stock"
+,"2146838","BF/B","Brown-Forman Corp",2927315,$151108000.3,0.06663,"Beverages","US","Common Stock"
+,"2583576","ON","ON Semiconductor Corp",2053097,$151005284.35,0.06659,"Semiconductors & Semiconductor Equipment","US","Common Stock"
+,"B65SQW4","ENPH","Enphase Energy Inc",1240329,$150055002.42,0.06617,"Semiconductors & Semiconductor Equipment","US","Common Stock"
+,"2046853","ALB","Albemarle Corp",1129012,$148736040.88,0.06559,"Chemicals","US","Common Stock"
+,"2754907","RCL","Royal Caribbean Cruises Ltd",1053569,$146456626.69,0.06458,"Hotels, Restaurants & Leisure","US","Common Stock"
+,"BF311Y5","BURL","Burlington Stores Inc",623577,$144788343.63,0.06385,"Specialty Retail","US","Common Stock"
+,"BL3LWS8","VRT","Vertiv Holdings Co",1753405,$143200586.35,0.06315,"Electrical Equipment","US","Common Stock"
+,"2747305","ROL","Rollins Inc",2808513,$129949896.51,0.0573,"Commercial Services & Supplies","US","Common Stock"
+,"BJXMVK2","TW","Tradeweb Markets Inc",1121242,$116799779.14,0.0515,"Capital Markets","US","Common Stock"
+,"BD8DJ71","SNAP","Snap Inc",10154104,$116569113.92,0.0514,"Interactive Media & Services","US","Common Stock"
+,"BMC1PR6","BSY","Bentley Systems Inc",2206471,$115221915.62,0.05081,"Software","US","Common Stock"
+,"2237561","HEI/A","HEICO Corp",721528,$111072020.32,0.04898,"Aerospace & Defense","US","Common Stock"
+,"BFY8C75","STE","STERIS PLC",479357,$107769040.74,0.04752,"Health Care Equipment & Supplies","US","Common Stock"
+,"2471950","INCY","Incyte Corp",1852723,$105549629.31,0.04654,"Biotechnology","US","Common Stock"
+,"BPGMZQ5","VLTO","Veralto Corp",1139795,$101054224.7,0.04456,"Commercial Services & Supplies","US","Common Stock"
+,"2503477","TDY","Teledyne Technologies Inc",229783,$98650437.56,0.0435,"Electronic Equipment, Instruments & Components","US","Common Stock"
+,"2692687","BRO","Brown & Brown Inc",1115829,$97679670.66,0.04307,"Insurance","US","Common Stock"
+,"2162340","CTRA","Coterra Energy Inc",3488317,$97254277.96,0.04288,"Oil, Gas & Consumable Fuels","US","Common Stock"
+,"BKVD2N4","STX","Seagate Technology Holdings PLC",1020217,$94931191.85,0.04186,"Technology Hardware, Storage & Peripherals","US","Common Stock"
+,"BWFRFC6","GDDY","GoDaddy Inc",696841,$82701089.88,0.03647,"IT Services","US","Common Stock"
+,"2319414","EQT","EQT Corp",2161856,$80140001.92,0.03534,"Oil, Gas & Consumable Fuels","US","Common Stock"
+,"BDQZFJ3","LW","Lamb Weston Holdings Inc",709666,$75600718.98,0.03334,"Food Products","US","Common Stock"
+,"2419217","HEI","HEICO Corp",393115,$75084965,0.03311,"Aerospace & Defense","US","Common Stock"
+,"BGSP7M9","ZM","Zoom Video Communications Inc",1137385,$74350857.45,0.03279,"Software","US","Common Stock"
+,"2469193","JKHY","Jack Henry & Associates Inc",360787,$62679525.51,0.02764,"Financial Services","US","Common Stock"
+,"B1XGNW4","PODD","Insulet Corp",347318,$59530305.2,0.02625,"Health Care Equipment & Supplies","US","Common Stock"
+,"B1WT4X2","IBKR","Interactive Brokers Group Inc",508057,$56755047.47,0.02503,"Capital Markets","US","Common Stock"
+,"BM99VY2","TPL","Texas Pacific Land Corp",92461,$53489613.11,0.02359,"Oil, Gas & Consumable Fuels","US","Common Stock"
+,"BD6P5Q0","TWLO","Twilio Inc",861470,$52678890.5,0.02323,"IT Services","US","Common Stock"
+,"BL95MY0","PAYC","Paycom Software Inc",247163,$49187908.63,0.02169,"Professional Services","US","Common Stock"
+,"BLGJ610","WMG","Warner Music Group Corp",1278554,$42217853.08,0.01862,"Entertainment","US","Common Stock"
+,"BLFDXH8","U","Unity Software Inc",1359363,$36294992.1,0.016,"Software","US","Common Stock"
+,"BRTLC06","LBRDK","Liberty Broadband Corp",594149,$34003147.27,0.01499,"Media","US","Common Stock"
+,"2146816","BF/A","Brown-Forman Corp",492333,$26069032.35,0.0115,"Beverages","US","Common Stock"
+,"BYXJF62","Z","Zillow Group Inc",406618,$19834826.04,0.00875,"Real Estate Management & Development","US","Common Stock"
+,"BPG82M8","SYM","Symbotic Inc",306991,$13814595,0.00609,"Machinery","US","Common Stock"
+,"BVYJBR3","ZG","Zillow Group Inc",102007,$4882055.02,0.00215,"Real Estate Management & Development","US","Common Stock"
+,"BRTLBY3","LBRDA","Liberty Broadband Corp",83127,$4748214.24,0.00209,"Media","US","Common Stock"
+,"99X8390","null","ABIOMED INC CVR RIGHTS (DEC 2022)",15,$15.3,0,"Health Care Equipment & Supplies","US","Right"
 
 Bonds holdings 
  ,SEDOL,Holdings name,Coupon rate,Maturity date,Face amount,Market value*,% of fund*
@@ -221,8 +213,8 @@ Commodities holdings
  ,SEDOL,Holdings name,% of fund*,Market value*,# of Contracts
 Short-term reserves holdings 
  ,SEDOL,Holdings name,Market value*,% of fund*
-,---,"Vanguard Market Liquidity Fund",$362498277.92,0.1628747363
-,---,"Vanguard Market Liquidity Fund",$16138200.22,0.007251083
+,"null","MKTLIQ",$408740804.96,0.18024
+,"null","SLBBH1142",$9336512.52,0.00412
 
 "<p>Sector categories are based on the Industry Classification Benchmark system (“ICB”), except for the “Other” category (if applicable), which includes securities that have not been provided an ICB classification as of the effective reporting period.</p>
 "

@@ -1,4 +1,4 @@
-curr_date, prev_date = '202403', '202402'
+curr_date, prev_date = '202404', '202403'
 import pandas as pd
 exec(open('_utility/_anomaly_portfolio.py').read())
 exec(open('_utility/_data_loading.py').read())
@@ -71,34 +71,23 @@ for size in ["non_micro", "micro"]:
     pd.concat(_outs.values()).sort_values(['anomaly', 'industry']).to_excel(writer, sheet_name=f"summary_{size}")
 writer.close()
 
-# Process-1: review the portfolio turnover: 202402 vs 202401
+# Process-1: review the portfolio turnover: 202404 vs 202403 and save in .\02.Signals\turnover_202404.xlsx
 #     non_micro: reporting turnover under each anomaly
 #         format is like size - anomaly: # in curr, # in prev, % of new tickers in curr
 #
-#     non_micro - selected_wgt_accruals_gt_0: 24 - 22 - 4.55%
-#     non_micro - selected_wgt_val_gt_0: 59 - 57 - 22.81%
-#     non_micro - selected_wgt_prof_gt_0: 65 - 65 - 23.08%
-#     non_micro - selected_wgt_season_gt_2: 2 - 6 - 100.00%
-#     non_micro - seasonality: 11 - 21 - 95.24%
-#     non_micro - MomSeason: 22 - 16 - 25.00%
-#     non_micro - MomRev: 35 - 29 - 55.17%
-#     non_micro - MomTurnover: 44 - 20 - 80.00%
-#     non_micro - MomInt: 156 - 137 - 25.55%
-#     non_micro - IO_ShortInterest: 5 - 5 - 0.00%
-#     non_micro - GPlag: 128 - 128 - 0.00%
-#     non_micro - AccrualsBM: 5 - 5 - 0.00%
+#     non_micro - MomRev_StMom: 5 - 3 - 100.00%
+#     non_micro - MomInt_StMom: 2 - 6 - 83.33%
+#     non_micro - high_BM_Low_Accruals: 7 - 11 - 90.91%
+#     non_micro - Mom_in_NYSE: 25 - 15 - 20.00%
+#     non_micro - Mfg_in_focus: 55 - 57 - 10.53%
+#     non_micro - Short_Squeeze: 5 - 5 - 20.00%
 #     micro: reporting turnover under each anomaly
 #         format is like size - anomaly: # in curr, # in prev, % of new tickers in curr
 #
-#     micro - selected_wgt_accruals_gt_0: 28 - 32 - 21.88%
-#     micro - selected_wgt_val_gt_0: 169 - 165 - 21.21%
-#     micro - selected_wgt_prof_gt_0: 96 - 100 - 20.00%
-#     micro - selected_wgt_season_gt_2: 24 - 33 - 75.76%
-#     micro - seasonality: 89 - 101 - 75.25%
-#     micro - MomSeason: 4 - 8 - 75.00%
-#     micro - MomRev: 139 - 113 - 26.55%
-#     micro - MomTurnover: 64 - 55 - 80.00%
-#     micro - MomInt: 209 - 226 - 34.51%
-#     micro - IO_ShortInterest: New
-#     micro - GPlag: 127 - 127 - 0.00%
-#     micro - AccrualsBM: 23 - 23 - 0.00%
+#     micro - MomRev_StMom: 13 - 28 - 92.86%
+#     micro - MomInt_StMom: 8 - 12 - 83.33%
+#     micro - high_BM_Low_Accruals: 7 - 69 - 98.55%
+#     micro - Mom_in_NYSE: 1 - 1 - 0.00%
+#     micro - Mfg_in_focus: 103 - 99 - 4.04%
+#     micro - Short_Squeeze: New
+

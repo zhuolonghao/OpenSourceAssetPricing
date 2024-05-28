@@ -30,9 +30,12 @@ _portfolios = {
     'MomRev_StMom': {'MomRev': lambda x: x==True, 'MomTurnover': lambda x: x==True},
     'MomInt_StMom': {'MomInt': lambda x: x==True, 'MomTurnover': lambda x: x==True},
     'high_BM_Low_Accruals': {'AccrualsBM_q': lambda x: x==True},
-    'Mom_in_NYSE': {'NYSE_AMEX': lambda x: x>2},
-    'Mfg_in_focus': {'Manufacturers': lambda x: x>0},
+    'Mom_in_NYSE': {'NYSE_AMEX': lambda x: x>=3/4},
+    'Mfg_in_focus': {'Manufacturers': lambda x: x==2/2},
     'Short_Squeeze': {'IO_ShortInterest_q': lambda x: x==True},
+    'wgt3_mom1': {'selected, wgt': lambda x: x>3, '6mMom_StMom': lambda x: x>=2/3},
+    'wgt3_val1': {'selected, wgt': lambda x: x>3, 'valuation': lambda x: x>=4/6},
+    'wgt3_prof1': {'selected, wgt': lambda x: x>3, 'profitability': lambda x: x>=4/6},
 }
 
 _etf_s2 = {

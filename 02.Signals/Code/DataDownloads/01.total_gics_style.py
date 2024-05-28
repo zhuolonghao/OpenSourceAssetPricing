@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import os
 
-date = '202403'
+date = '202404'
 
 ###########################################################################################################
 # GICS_8/Style/Size
@@ -71,6 +71,8 @@ gics = pd.read_excel("./_data/GICS_Map_2023.xlsx", sheet_name='reformatted')
 gics.columns = [x.lower() for x in gics.columns]
 gics = gics.fillna(method='ffill')
 gics = gics.applymap(lambda x: re.sub("[\(\[].*?[\)\]]", "", x).strip()[:36])
+# 2024.5.3: source data changed
+gics = gics.groupby(['sector', 'industry group', 'industry'], as_index=False)['sub-industry'].count()
 
 print(f'    Process-2c: add stock exchange')
 exchange = pd.read_csv("02.Signals/Data/equityshortinterest_20231001_20231130.csv", low_memory=False)
@@ -84,9 +86,12 @@ exchange = exchange[["symbol", "exchange"]].drop_duplicates()
 ###########################################################################################################
 ###########################################################################################################
 ###########################################################################################################
-total_gics_style = total.rename(columns={'sector': 'sub-industry'}).merge(
-    exchange, how='left', left_on='symbol', right_on='symbol').merge(
-    gics, how='left', left_on='sub-industry', right_on='sub-industry')
+# total_gics_style = total.rename(columns={'sector': 'sub-industry'}).merge(
+#     exchange, how='left', left_on='symbol', right_on='symbol').merge(
+#     gics, how='left', left_on='sub-industry', right_on='sub-industry')
+total_gics_style = total.rename(columns={'sector': 'industry'}).merge(
+     exchange, how='left', left_on='symbol', right_on='symbol').merge(
+     gics, how='left', left_on='industry', right_on='industry')
 total_gics_style['ticker'] = total_gics_style['ticker'].apply(lambda x: str(x).replace(".", "-"))
 cols = ['ticker', 'holdings name', 'exchange', 'market',
         'sector', 'industry group', 'industry',  'sub-industry',
@@ -105,12 +110,12 @@ for csv in downloads:
     shutil.copy(f"{path_downloads}\{csv}", f"{path_archive}\{csv}")
     os.remove(f"{path_downloads}\{csv}")
 
-# sector: 3693
-# mega_growth: 82
-# mega_value: 141
-# large_growth: 207
-# large_value: 350
-# mid_growth: 150
-# mid_value: 201
-# small_growth: 635
-# small_value: 852
+# sector: 3301 # note the universe drops to 3301 from 36xx in last run.
+# mega_growth: 79
+# mega_value: 140
+# large_growth: 199
+# large_value: 340
+# mid_growth: 155
+# mid_value: 195
+# small_growth: 616
+# small_value: 853

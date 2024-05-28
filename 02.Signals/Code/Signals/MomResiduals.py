@@ -29,6 +29,7 @@ def resid_rolling(df, window=36):
 
 def MomResiduals(base=base, ff=ff, keep_all=False):
     df = base.merge(ff, how='inner', left_on='date_ym', right_on='date_ym')
+    df = df.sort_values(['ticker', 'date_ym'])
     df['ret_rf'] = df.groupby('ticker')['close'].pct_change(1) - df['rf']
     _dfs = [resid_rolling.remote(ticker_df, 36) for ticker, ticker_df in df.groupby('ticker')]
     df = pd.concat(ray.get(_dfs), axis=0, ignore_index=True)

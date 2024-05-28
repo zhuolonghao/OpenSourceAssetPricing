@@ -1,4 +1,4 @@
-date = '202403'
+date = '202404'
 focus = 'non_micro_tickers' # non_micro_tickers vs micro_tickers
 
 import pandas as pd
@@ -23,7 +23,7 @@ for port, conditions_dict in _portfolios.items():
     try:
         for column, condition in conditions_dict.items():
             df_filter = df_filter[condition(df_filter[column])]
-            print(df_filter.shape)
+            print(f"     using {column} and left {df_filter.shape[0]} tickers")
         ###########################################################
         # filtering based on portfolio conditions
         ###########################################################
