@@ -1,5 +1,5 @@
 # Instruction: change the date
-date = '202404'
+date = '202405'
 
 import pandas as pd
 import pyarrow.parquet

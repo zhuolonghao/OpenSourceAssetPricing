@@ -1,4 +1,4 @@
-curr_date, prev_date = '202404', '202403'
+curr_date, prev_date = '202405', '202404'
 import pandas as pd
 exec(open('_utility/_anomaly_portfolio.py').read())
 exec(open('_utility/_data_loading.py').read())

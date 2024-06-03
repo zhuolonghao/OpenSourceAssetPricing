@@ -1,5 +1,5 @@
 _size_style = ['mega_growth', 'mega_value', 'large_growth', 'large_value', 'mid_growth', 'mid_value', 'small_growth', 'small_value']
-_dimension = ['ticker', 'holdings name', 'exchange', 'market', 'sector', 'industry group', 'industry', 'sub-industry', 'date_ym'] + _size_style
+_dimension = ['ticker', 'holdings name', 'exchange', 'market', 'sector', 'industry group', 'industry',  'date_ym'] + _size_style
 _anomaly = [
     'MomRev', 'MomFirmAge', 'MomVol', 'MomInt', 'MomResiduals6m',
     'MomResiduals12m', 'Mom_m02_m11', 'Mom_m02_m11_pos', 'Season_0205',

@@ -1,4 +1,4 @@
-date = '202404'
+date = '202405'
 focus = 'non_micro_tickers' # non_micro_tickers vs micro_tickers
 
 import pandas as pd
@@ -12,7 +12,7 @@ exec(open('_utility/_plotting.py').read())
 ###########################################################
 # filtering based on portfolio conditions
 ###########################################################
-df = pd.read_excel(fr'.\02.Signals\rankings_{date}.xlsx',  sheet_name=focus)
+df = pd.read_excel(fr'.\02.Signals\rankings_{date}.xlsx',  sheet_name=focus, engine='openpyxl')
 for key, value in _anomalies.items():
     df[key] = df[key] / len(value)
 df2 = df.reset_index()

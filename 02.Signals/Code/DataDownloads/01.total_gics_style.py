@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 import os
 
-date = '202404'
+date = '202405'
 
 ###########################################################################################################
 # GICS_8/Style/Size
@@ -110,12 +110,12 @@ for csv in downloads:
     shutil.copy(f"{path_downloads}\{csv}", f"{path_archive}\{csv}")
     os.remove(f"{path_downloads}\{csv}")
 
-# sector: 3301 # note the universe drops to 3301 from 36xx in last run.
+# sector: 3297  ---> 3301 (1m ago) ---> 3600 (2m ago)
 # mega_growth: 79
-# mega_value: 140
-# large_growth: 199
-# large_value: 340
+# mega_value: 141
+# large_growth: 200
+# large_value: 342
 # mid_growth: 155
-# mid_value: 195
-# small_growth: 616
-# small_value: 853
+# mid_value: 196
+# small_growth: 622
+# small_value: 857

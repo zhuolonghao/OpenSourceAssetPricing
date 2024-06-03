@@ -4,7 +4,7 @@ import pandas as pd
 
 exec(open('_utility/download_tickers_from_yfinance3.py').read())
 
-ref = pd.read_excel("./_data/_total_gics_style_sub_industry.xlsx")
+ref = pd.read_excel("./_data/_total_gics_style.xlsx")
 tickers = [str(x).replace(".", "-").replace("/", "-") for x in ref['ticker']]
 
 df = download(tickers=tickers, data_type="price", period="max", interval="1mo")
